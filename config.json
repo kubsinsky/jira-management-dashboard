@@ -1,0 +1,55 @@
+{
+  "host": "Booksy.atlassian.net",
+  "email": "jakub.rusecki@booksy.com",
+  "token": "ATATT3xFfGF0cpDQeRnYPxOS91god3OUMBFBOTMpLHrl0At2uV5vaZ0p4G8nfFTiGlv1c8KhIvvIpBxFOjIBXO7Z2-vZrACzfm-5b2gc8S4DAqLpFFNwyuX4kTnmdud0NgTxldvQ5VkWftVnK8ZFjEUy7HQ6en0T03IC1MwfWyylTEbMXhIzaDE=BD46475E",
+  "boardId": 3724,
+  "boardName": "All Ops Projects (scrum)",
+  "quickNoteShortcut": "",
+  "persistedTeams": {
+    "18ab3c07-1ec2-4231-8094-39dd3a27de15": {
+      "id": "18ab3c07-1ec2-4231-8094-39dd3a27de15",
+      "name": "GTM Ops",
+      "avatarUrl": ""
+    },
+    "dc729a7d-f82d-4608-bade-7ae3a2397b80": {
+      "id": "dc729a7d-f82d-4608-bade-7ae3a2397b80",
+      "name": "ES Ops",
+      "avatarUrl": ""
+    },
+    "47b13080-2e6e-46d6-b9f4-993bbd32a205": {
+      "id": "47b13080-2e6e-46d6-b9f4-993bbd32a205",
+      "name": "Px Conversion Team",
+      "avatarUrl": ""
+    },
+    "41d16b84-bcf1-4caf-bfd8-ced6db1585ff": {
+      "id": "41d16b84-bcf1-4caf-bfd8-ced6db1585ff",
+      "name": "SRE Team",
+      "avatarUrl": ""
+    },
+    "01f16566-41b8-41a0-821b-c5aa3a4269b3": {
+      "id": "01f16566-41b8-41a0-821b-c5aa3a4269b3",
+      "name": "PL Ops",
+      "avatarUrl": ""
+    },
+    "cc125c28-454c-4a5e-ac16-d2d4ce9379aa": {
+      "id": "cc125c28-454c-4a5e-ac16-d2d4ce9379aa",
+      "name": "RevOps",
+      "avatarUrl": ""
+    },
+    "cd154420-3910-4314-89f6-c04bc113e202": {
+      "id": "cd154420-3910-4314-89f6-c04bc113e202",
+      "name": "Platform Ops",
+      "avatarUrl": ""
+    },
+    "d874169e-661f-4cd4-9286-99319cc458a9": {
+      "id": "d874169e-661f-4cd4-9286-99319cc458a9",
+      "name": "US Ops",
+      "avatarUrl": ""
+    },
+    "669e6c9b-dd55-4bf5-a1e4-04f37532cde4": {
+      "id": "669e6c9b-dd55-4bf5-a1e4-04f37532cde4",
+      "name": "Salesforce Service Cloud Team",
+      "avatarUrl": ""
+    }
+  }
+}

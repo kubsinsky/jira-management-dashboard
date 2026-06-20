@@ -1,0 +1,20 @@
+{
+  "name": "ops-dashboard",
+  "version": "1.5.0",
+  "description": "Ops Dashboard — Booksy Jira management",
+  "main": "main.js",
+  "scripts": {
+    "start": "node server.js",
+    "electron": "electron .",
+    "build": "electron-builder --config electron-builder.config.js",
+    "build:mac": "electron-builder --mac --config electron-builder.config.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3"
+  }
+}
