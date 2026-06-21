@@ -106,7 +106,7 @@ ipcMain.on('show-notification', (_event, payload) => {
   const { title, body, key, updated } = payload || {};
 
   const options = { title, body, silent: false };
-  
+
   // Dodajemy natywne przyciski akcji (wspierane w pełni na macOS)
   if (process.platform === 'darwin') {
     options.actions = [

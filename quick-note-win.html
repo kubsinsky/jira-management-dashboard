@@ -19,7 +19,7 @@
   .btn-close { background:rgba(255,255,255,.2); border:none; color:#fff; width:26px; height:26px; border-radius:7px; cursor:pointer; font-size:14px; display:flex; align-items:center; justify-content:center; }
   .btn-close:hover { background:rgba(255,255,255,.35); }
   .body { flex:1; padding:12px 16px; display:flex; flex-direction:column; gap:8px; overflow:hidden; }
-  
+
   /* ── Ticket search ── */
   .ticket-wrap { position:relative; flex-shrink:0; }
   .ticket-search { width:100%; padding:8px 11px 8px 32px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:13px; font-family:inherit; outline:none; color:#0f172a; transition:border .15s; background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 16 16' fill='%2394a3b8'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398l3.85 3.85a1 1 0 0 0 1.415-1.415l-3.868-3.833zm-5.242 1.156a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E") no-repeat 10px center; }
@@ -56,7 +56,7 @@
   .editor strong,.editor b { font-weight:700; }
   .editor em,.editor i { font-style:italic; }
   .editor s,.editor del { text-decoration:line-through; }
-  
+
   .date-row { display:flex; align-items:center; gap:8px; flex-shrink:0; }
   .date-label { font-size:12px; color:#64748b; }
   .date-input { padding:5px 8px; border:1.5px solid #e2e8f0; border-radius:6px; font-size:12px; font-family:inherit; color:#334155; outline:none; }
@@ -91,7 +91,7 @@
         onblur="onTicketSearchBlur()" />
       <div id="ticket-dd" class="ticket-dd"></div>
     </div>
-    
+
     <div class="toolbar">
       <button onmousedown="fmt(event,'bold')"><b>B</b></button>
       <button onmousedown="fmt(event,'italic')"><i>I</i></button>
@@ -101,7 +101,7 @@
       <button onmousedown="insertTask(event)">☐ Task</button>
       <button onmousedown="event.preventDefault(); const ed=document.getElementById('editor'); engineInsertLink(ed, onEditorInput);">🔗 Link</button>
     </div>
-    
+
     <div id="editor" class="editor" contenteditable="true"
          data-placeholder="Type your note…"
          oninput="onEditorInput()"
@@ -122,15 +122,15 @@
 
 <script>
   var LN_PRE='ln_', LN_IDX='ln_index';
-  var QN_KEY='__QUICK_NOTE__';   
-  var QN_PREFIX='__QN_';         
-  var _currentQnKey=null;        
+  var QN_KEY='__QUICK_NOTE__';
+  var QN_PREFIX='__QN_';
+  var _currentQnKey=null;
   var _selTick=null, _tickBlur=null, _lpRange=null, _titleBeforeEdit='Quick Note';
 
   // ── MOSTKI SYNCHRONIZACYJNE: Przekierowanie operacji na wspólny silnik ──
   function mdToHtml(md) { return engineMdToHtml(md); }
   function htmlToMd(html) { return engineHtmlToMd(html); }
-  
+
 function fmt(e,cmd){
     e.preventDefault();
     document.getElementById('editor').focus();
@@ -168,7 +168,7 @@ function fmt(e,cmd){
     for(var i=0;i<idx.length;i++){
       if(idx[i]===QN_KEY||idx[i].startsWith(QN_PREFIX)) return idx[i];
     }
-    return QN_PREFIX+Date.now()+'__'; 
+    return QN_PREFIX+Date.now()+'__';
   }
 
   function lnGetIndex(){try{return JSON.parse(localStorage.getItem(LN_IDX)||'[]');}catch(e){return[];}}
@@ -183,7 +183,7 @@ function fmt(e,cmd){
   function escStr(s){return(s||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'")}
   function showTicketDd(html){var dd=document.getElementById('ticket-dd');if(dd){dd.innerHTML=html;dd.style.display='block';}}
   function hideTicketDd(){var dd=document.getElementById('ticket-dd');if(dd)dd.style.display='none';}
-  
+
   function selectTicket(key,summary){
     _selectedTicketKey=key; _selectedTicketSummary=summary;
     document.getElementById('tc-key').textContent=key;
@@ -199,7 +199,7 @@ function fmt(e,cmd){
     document.getElementById('ticket-chip').style.display='none';
     var inp=document.getElementById('ticket-search');
     if(inp){inp.style.display='';inp.value='';inp.focus();}
-    
+
     if (/^[A-Z]+-\d+$/.test(_currentQnKey)) {
       var noteData = null;
       try { noteData = JSON.parse(localStorage.getItem(LN_PRE + _currentQnKey)); } catch(e){}
@@ -209,14 +209,14 @@ function fmt(e,cmd){
         noteData.ticketKey = '';
         noteData.ticketSummary = '';
         if (noteData.summary === oldKey) noteData.summary = 'Quick Note';
-        
+
         localStorage.setItem(LN_PRE + newKey, JSON.stringify(noteData));
         localStorage.removeItem(LN_PRE + _currentQnKey);
-        
+
         var idx = lnGetIndex().filter(function(x){ return x !== _currentQnKey; });
         if (idx.indexOf(newKey) === -1) idx.unshift(newKey);
         lnSaveIndex(idx);
-        
+
         _currentQnKey = newKey;
         document.getElementById('note-header-title').textContent = noteData.summary;
       }
@@ -224,7 +224,7 @@ function fmt(e,cmd){
   }
 
   function _normalize(i){if(!i)return null;return{key:i.key,summary:i.summary||(i.fields&&i.fields.summary)||''};}
-  
+
   function fetchTickets(jql,callback){
     fetch('/api/search/jql',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jql:jql,fields:['summary'],maxResults:50})})
       .then(function(r){return r.text();}).then(function(text){
@@ -328,7 +328,7 @@ function fmt(e,cmd){
       if(ed){ var md=existing.md!==undefined?existing.md:_stripHtml(existing.html||''); ed.innerHTML=mdToHtml(md); }
       if(dt&&existing.date) dt.value=existing.date;
       if(ht&&ht.contentEditable!=='true'){
-        var s=existing.summary||''; 
+        var s=existing.summary||'';
         ht.textContent=(s&&s!=='Quick Note'&&s!==QN_KEY&&!s.startsWith(QN_PREFIX))?s:'Quick Note';
       }
     } else {
@@ -395,7 +395,7 @@ function fmt(e,cmd){
     var r=document.createRange(),s=window.getSelection();
     r.selectNodeContents(el); s.removeAllRanges(); s.addRange(r);
   }
-  
+
   function finishTitleEdit(cancel){
     var el=document.getElementById('note-header-title');
     if(!el||el.contentEditable!=='true') return;
@@ -413,17 +413,17 @@ function fmt(e,cmd){
     if(e.key==='Escape') closeWin();
     if((e.metaKey||e.ctrlKey)&&e.key==='Return'){e.preventDefault();saveNote();}
   });
-  
+
   window.addEventListener('storage',function(e){
     if(e.key===LN_IDX||(e.key&&(e.key===LN_PRE+QN_KEY||e.key.startsWith(LN_PRE+QN_PREFIX)))) loadQuickNote();
   });
-  
+
   function _focusEnd(){
     var ed=document.getElementById('editor'); if(!ed) return; ed.focus();
     var r=document.createRange(),s=window.getSelection();
     r.selectNodeContents(ed); r.collapse(false); s.removeAllRanges(); s.addRange(r);
   }
-  
+
   window.addEventListener('DOMContentLoaded',function(){
     loadQuickNote();
     if(window.electronAPI){
@@ -434,7 +434,7 @@ function fmt(e,cmd){
       });
       if(window.electronAPI.onSaveAndHide) window.electronAPI.onSaveAndHide(function(){saveNote();});
       if(window.electronAPI.onShowQuickNote) window.electronAPI.onShowQuickNote(function(payload){
-        _persistCurrentNote(); 
+        _persistCurrentNote();
         var key     = payload && typeof payload === 'object' ? (payload.key     || '') : (payload || '');
         var summary = payload && typeof payload === 'object' ? (payload.summary || '') : '';
         if(key) loadNoteByKey(key, summary); else loadQuickNote();

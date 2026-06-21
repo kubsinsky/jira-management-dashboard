@@ -131,14 +131,14 @@ const ModernEngine = {
     if (!sel || !sel.rangeCount) return;
     const range = sel.getRangeAt(0);
     range.deleteContents();
-    
+
     const el = document.createElement('div');
     el.innerHTML = html;
     const frag = document.createDocumentFragment();
     let node, lastNode;
     while ((node = el.firstChild)) { lastNode = frag.appendChild(node); }
     range.insertNode(frag);
-    
+
     if (lastNode) {
       const newRange = range.cloneRange();
       newRange.setStartAfter(lastNode);
@@ -170,16 +170,16 @@ toggleInline(cmd) {
     if (!sel || !sel.rangeCount || sel.isCollapsed) return;
 
     const range = sel.getRangeAt(0);
-    
+
     // Locate the container element of the current selection highlight
     let parentNode = range.commonAncestorContainer;
     if (parentNode.nodeType === 3) { // 3 means it is a raw TEXT_NODE
       parentNode = parentNode.parentNode;
     }
-    
+
     // Check if the highlighted text is already nested inside the targeted formatting style
     const existingTag = parentNode.closest(tagName);
-    
+
     if (existingTag) {
       // UN-TOGGLE STYLE: Extract text contents out of the tag to revert to normal text
       const fragment = document.createDocumentFragment();
@@ -194,7 +194,7 @@ toggleInline(cmd) {
         // extractContents safely pulls nodes out of the DOM tree without breaking deep block roots
         wrapperElement.appendChild(range.extractContents());
         range.insertNode(wrapperElement);
-        
+
         // Re-apply focus selection highlights cleanly across the text block for smooth UX
         const reselectRange = document.createRange();
         reselectRange.selectNodeContents(wrapperElement);
@@ -220,7 +220,7 @@ toggleInline(cmd) {
         prev.appendChild(nestedList);
       }
       nestedList.appendChild(li);
-      
+
       if (nestedList.tagName === 'UL' && !nestedList.classList.contains('task-list')) {
         li.className = '';
         li.removeAttribute('data-checked');
@@ -246,7 +246,7 @@ toggleInline(cmd) {
       parentList.parentNode.insertBefore(p, parentList.nextSibling);
       li.remove();
       if (parentList.children.length === 0) parentList.remove();
-      
+
       const sel = window.getSelection();
       const r = document.createRange(); r.setStart(p, 0); r.collapse(true);
       sel.removeAllRanges(); sel.addRange(r);
@@ -257,7 +257,7 @@ toggleInline(cmd) {
     const sel = window.getSelection();
     if (!sel || !sel.rangeCount) return;
     const range = sel.getRangeAt(0);
-    
+
     let block = range.startContainer;
     if (block.nodeType === 3) block = block.parentNode;
     block = block.closest('p, div, li');
@@ -272,7 +272,7 @@ if (!block || block.id === 'notes-canvas' || block.id === 'editor') {
       const isCurrentType = (type === 'ul' && parentList.tagName === 'UL' && !parentList.classList.contains('task-list')) ||
                             (type === 'ol' && parentList.tagName === 'OL') ||
                             (type === 'task' && parentList.classList.contains('task-list'));
-      
+
       if (isCurrentType) {
         const p = document.createElement('p');
         p.innerHTML = block.innerHTML.replace(/<span class="task-cb".*?<\/span>/i, '');
@@ -280,7 +280,7 @@ if (!block || block.id === 'notes-canvas' || block.id === 'editor') {
         parentList.parentNode.insertBefore(p, parentList.nextSibling);
         block.remove();
         if (!parentList.children.length) parentList.remove();
-        
+
         range.setStart(p, 0); range.collapse(true);
         sel.removeAllRanges(); sel.addRange(range);
       } else {
@@ -308,7 +308,7 @@ if (!block || block.id === 'notes-canvas' || block.id === 'editor') {
       if (type === 'task') list.className = 'task-list';
       const li = document.createElement('li');
       li.innerHTML = block.innerHTML === '<br>' ? '' : block.innerHTML;
-      
+
       if (type === 'task') {
         li.className = 'task-item'; li.dataset.checked = 'false';
         li.innerHTML = '<span class="task-cb" contenteditable="false" style="cursor:pointer;margin-right:6px;user-select:none;font-size:14px;color:var(--gray-400)">☐</span>' + (li.innerHTML || '&#x200b;');
@@ -448,12 +448,12 @@ function engineInsertLink(el, saveCallback) {
   var url = prompt('Enter link URL (e.g. https://google.com):');
   if (!url) return;
   if (!url.match(/^https?:\/\//i)) url = 'https://' + url;
-  
+
   var sel = window.getSelection();
   var text = sel ? sel.toString().trim() : '';
   var display = text || url;
   var htmlLink = '<a href="' + url.replace(/"/g, '&quot;') + '" target="_blank">' + _engineInl(display) + '</a> ';
-  
+
   ModernEngine.insertHTML(htmlLink);
   if (typeof saveCallback === 'function') saveCallback();
 }

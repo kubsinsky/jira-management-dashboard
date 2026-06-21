@@ -183,7 +183,7 @@
       z-index: 1;
     }
     /* Wynosimy dzieci wyżej, by paski tekstowe i przyciski były w pełni klikalne */
-    .app-header .brand, 
+    .app-header .brand,
     .app-header .header-right {
       position: relative;
       z-index: 2;
@@ -305,13 +305,13 @@
       border-bottom: 1.5px solid var(--gray-200);
       position: sticky;
       /* GH_FIX: Snap directly to the ceiling of the isolated scroll container pane */
-      top: 0; 
+      top: 0;
       /* GH_FIX: Elevate stacking priority so scrolling tickets slide cleanly underneath */
-      z-index: 95 !important; 
-      font-size: 11px; 
+      z-index: 95 !important;
+      font-size: 11px;
       font-weight: 600;
       color: var(--gray-500); /* Zmiana na nieco ciemniejszy, lepiej widoczny odcień */
-      text-transform: uppercase; 
+      text-transform: uppercase;
       letter-spacing: .06em;
       align-items: center; /* Perfekcyjne centrowanie pionowe tekstów wewnątrz nagłówka */
       box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.05); /* Subtelny cień odcinający nagłówek od przewijanej treści */
@@ -432,12 +432,12 @@
       transition: opacity .12s, background .15s, color .15s;
     }
 /* Revealed actions container mapping for both task rows and epic group headers */
-    .issue-row:hover .copy-link-btn, .assignee-group-header:hover .copy-link-btn { 
-      opacity: 0.4; 
+    .issue-row:hover .copy-link-btn, .assignee-group-header:hover .copy-link-btn {
+      opacity: 0.4;
     }
-    .issue-row .copy-link-btn:hover, .assignee-group-header .copy-link-btn:hover { 
-      opacity: 1; 
-      background: var(--blue-light); color: var(--blue); border-color: var(--blue-mid); 
+    .issue-row .copy-link-btn:hover, .assignee-group-header .copy-link-btn:hover {
+      opacity: 1;
+      background: var(--blue-light); color: var(--blue); border-color: var(--blue-mid);
     }
     .copy-link-btn.copied { color: var(--green); border-color: #bbf7d0; background: var(--green-light); opacity: 1 !important; }
 
@@ -446,64 +446,64 @@
       width: 22px; height: 22px; border-radius: 5px;
       border: 1px solid var(--border); background: var(--gray-100); cursor: pointer;
       color: var(--gray-500); padding: 0; flex-shrink: 0;
-      opacity: 0; 
+      opacity: 0;
       transition: opacity .12s, background .15s, color .15s;
     }
-    .issue-row:hover .note-icon-btn, .assignee-group-header:hover .note-icon-btn { 
-      opacity: 1; 
+    .issue-row:hover .note-icon-btn, .assignee-group-header:hover .note-icon-btn {
+      opacity: 1;
     }
     .note-icon-btn:hover { background: var(--blue-light); color: var(--blue); border-color: var(--blue-mid); }
     .note-icon-btn:hover { background: var(--blue-light); color: var(--blue); border-color: var(--blue-mid); }
-    
+
     /* WYJĄTEK PREMIUM: Jeśli bilet posiada zapisaną notatkę, ignoruj ukrywanie i pokazuj go stale */
-    .note-icon-btn.has-note { 
-      opacity: 1 !important; 
-      color: var(--orange); border-color: var(--orange); background: var(--orange-light); 
+    .note-icon-btn.has-note {
+      opacity: 1 !important;
+      color: var(--orange); border-color: var(--orange); background: var(--orange-light);
     }
 
  /* ── Local Notes tab ── */
     /* ── Przeprojektowana, luksusowa sekcja notatek (Notion-Style) ── */
-    .notes-split { 
-      display: flex; 
-      height: calc(100vh - 115px); 
-      overflow: hidden; 
+    .notes-split {
+      display: flex;
+      height: calc(100vh - 115px);
+      overflow: hidden;
       background: var(--surface);
-      margin-left: -24px !important; 
+      margin-left: -24px !important;
       margin-right: -24px !important;
       margin-top: -6px !important;
     }
-    
-    .notes-list-panel { 
-      width: 300px !important; 
-      min-width: 300px !important; 
-      background: var(--bg) !important; 
-      border-right: 1px solid var(--border) !important; 
-      display: flex !important; 
-      flex-direction: column !important; 
+
+    .notes-list-panel {
+      width: 300px !important;
+      min-width: 300px !important;
+      background: var(--bg) !important;
+      border-right: 1px solid var(--border) !important;
+      display: flex !important;
+      flex-direction: column !important;
       overflow-y: auto !important;
-      padding: 12px 10px !important; 
+      padding: 12px 10px !important;
       gap: 8px !important;
     }
-    
-    .notes-editor-panel { 
-      flex: 1; 
-      display: flex; 
-      flex-direction: column; 
-      background: var(--surface); 
-      overflow-y: auto; 
-      position: relative; 
+
+    .notes-editor-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+      overflow-y: auto;
+      position: relative;
     }
 
 /* Wygląd mikro-karty dla każdej notatki na liście */
     .note-item {
-      padding: 12px 36px 12px 14px !important; 
+      padding: 12px 36px 12px 14px !important;
       border-radius: 8px !important;
-      border: 1px solid var(--border) !important; 
-      background: var(--surface) !important; 
+      border: 1px solid var(--border) !important;
+      background: var(--surface) !important;
       margin: 2px 4px !important;
       position: relative !important;
       cursor: pointer !important;
-      box-shadow: var(--shadow-sm) !important; 
+      box-shadow: var(--shadow-sm) !important;
       transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
 
       /* GWARANCJA STAŁEGO ROZMIARU I WYRÓWNANIA (PIXEL-PERFECT UX) */
@@ -513,21 +513,21 @@
       justify-content: space-between !important;
       box-sizing: border-box !important;
     }
-    
+
     .note-item:hover {
       background: var(--gray-50) !important;
       border-color: var(--gray-300) !important;
       box-shadow: var(--shadow) !important;
       transform: translateY(-0.5px);
     }
-    
+
     .note-item.active {
-      background: var(--orange-light) !important; 
+      background: var(--orange-light) !important;
       border-color: #fcd34d !important;
-      border-left: 4px solid var(--orange) !important; 
+      border-left: 4px solid var(--orange) !important;
       box-shadow: 0 4px 12px -3px rgba(249,115,22,0.08) !important;
     }
-    
+
     .note-item.active .nli-key {
       color: var(--orange) !important;
       font-weight: 700 !important;
@@ -606,21 +606,21 @@
       box-shadow: 0 4px 12px rgba(37,99,235,0.2);
     }
 
-    .notes-list-item { position:relative; } 
-    .nli-del-btn { 
-      position: absolute !important; 
-      right: 10px !important; 
-      top: 14px !important; 
-      opacity: 0; 
-      background: none !important; 
-      border: none !important; 
-      cursor: pointer !important; 
-      font-size: 12px !important; 
-      padding: 4px 6px !important; 
-      border-radius: 5px !important; 
-      color: var(--gray-400) !important; 
-      transition: opacity .12s, color .1s, background .1s !important; 
-      line-height: 1 !important; 
+    .notes-list-item { position:relative; }
+    .nli-del-btn {
+      position: absolute !important;
+      right: 10px !important;
+      top: 14px !important;
+      opacity: 0;
+      background: none !important;
+      border: none !important;
+      cursor: pointer !important;
+      font-size: 12px !important;
+      padding: 4px 6px !important;
+      border-radius: 5px !important;
+      color: var(--gray-400) !important;
+      transition: opacity .12s, color .1s, background .1s !important;
+      line-height: 1 !important;
     }
     .note-item:hover .nli-del-btn { opacity: 1 !important; }
     .nli-del-btn:hover { color: var(--red) !important; background: var(--red-light) !important; }
@@ -976,10 +976,10 @@
     }
     .tab-btn:hover { color: var(--gray-900); }
     /* UI_OPTIMIZATION: Enforced strict semibold weight on active tab state to enhance view state mapping */
-    .tab-btn.active { 
-      color: var(--blue); 
-      border-bottom-color: var(--blue); 
-      font-weight: 600; 
+    .tab-btn.active {
+      color: var(--blue);
+      border-bottom-color: var(--blue);
+      font-weight: 600;
     }
     .tab-count {
       display: inline-flex;
@@ -1006,23 +1006,23 @@
 
 /* ── Main content ── */
     /* UI_FIX: Trim out bottom padding overflow and enforce a rigid container layout constraint */
-    .main-content { 
-      padding: 6px 24px 0 24px; 
-      width: 100%; 
-      height: calc(100vh - 99px); 
-      overflow: hidden; 
-      box-sizing: border-box; 
+    .main-content {
+      padding: 6px 24px 0 24px;
+      width: 100%;
+      height: calc(100vh - 99px);
+      overflow: hidden;
+      box-sizing: border-box;
     }
-    
+
     /* UI_CORE_FIX: Enforce full height alignment inside the rigid workspace bounds */
-    .tab-pane { 
-      display: none; 
-      height: 100%; 
-      width: 100%; 
-      box-sizing: border-box; 
+    .tab-pane {
+      display: none;
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
     }
-    .tab-pane.active { 
-      display: block; 
+    .tab-pane.active {
+      display: block;
     }
 
 /* UI_WORKSPACE_FIX: Activate isolated native scrolling only for multi-row data feeds, leaving splits untouched */
@@ -1583,11 +1583,11 @@
       flex-shrink: 0; /* Nagłówek nigdy się nie skurczy */
     }
     .modal-header h2 { font-size: 16px; font-weight: 700; }
-    .modal-body { 
-      padding: 20px 24px; 
-      display: flex; 
-      flex-direction: column; 
-      gap: 16px; 
+    .modal-body {
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
       overflow-y: auto; /* TYLKO ta sekcja ze środka formularza będzie się przewijać! */
       flex: 1;
     }
@@ -1720,7 +1720,7 @@
       padding-left: 11px !important; /* Idealne wyrównanie pikseli z siatką główną */
       opacity: 0.75 !important; /* Delikatne wygaszenie kontrastu dla odróżnienia od zadań aktywnych */
     }
-    
+
     .done-row > .issue-row:hover {
       background: rgba(34, 197, 94, 0.04) !important;
     }
@@ -1729,16 +1729,16 @@
        ========================================================================== */
 
     /* Nadpisujemy sztywny rozkład kolumn nowymi, lżejszymi proporcjami */
-    .grid-table-header, 
-    .assignee-group-header, 
+    .grid-table-header,
+    .assignee-group-header,
     .issue-row {
       grid-template-columns: 90px minmax(160px, 1fr) 110px 120px 105px 75px 75px 75px !important;
       min-width: 940px !important; /* Ochrona: poniżej tej szerokości siatka przestanie się gnieść */
     }
 
     /* Aktywujemy płynne przewijanie poziome tylko dla list zadań, gdy okno jest za małe */
-    #pane-myTasks, 
-    #pane-inbox, 
+    #pane-myTasks,
+    #pane-inbox,
     #pane-oversight {
       overflow-x: auto !important;
       overflow-y: auto !important;
@@ -1836,12 +1836,12 @@
     }
 
     /* 1. FIX SEKCJI TASKS & PROJECT INBOX (Koniec z nakładaniem się kolumn i ucinaniem klucza) */
-    .grid-table-header, 
-    .assignee-group-header, 
+    .grid-table-header,
+    .assignee-group-header,
     .issue-row {
       /* Zwiększamy pierwszą kolumnę z 100px na 125px, aby klucze biletów nigdy się nie ucinały */
       grid-template-columns: 125px minmax(240px, 1fr) 130px 130px 110px 90px 90px 90px !important;
-      min-width: 1105px !important; 
+      min-width: 1105px !important;
     }
 
     /* Zapewniamy, że elementy tekstowe wewnątrz komórek będą bezpiecznie ucinane kropkami (...) */
@@ -1858,9 +1858,9 @@
     }
 
     /* Domyślne wymuszenie wyświetlania elementów na pełnym ekranie */
-    .col-updated, 
+    .col-updated,
     .grid-table-header > div:nth-child(6),
-    .issue-row > div:nth-child(3), 
+    .issue-row > div:nth-child(3),
     .grid-table-header > div:nth-child(3),
     .issue-desc-preview {
       display: inline-flex !important;
@@ -2007,7 +2007,7 @@
 
   <header class="app-header">
     <div class="app-header-drag"></div>
-    
+
     <div class="brand">
       <img src="data:image/png;base64,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" style="width:28px;height:28px;border-radius:6px;flex-shrink:0;" alt="icon" />
       Jira Management Dashboard
@@ -2089,14 +2089,14 @@
 </div>
 
 <!-- ── Create Issue Modal ── -->
-<div class="modal-backdrop" id="create-modal" style="overflow:visible;">
-  <div class="modal" style="overflow:visible;">
+<div class="modal-backdrop" id="create-modal">
+  <div class="modal">
     <div class="modal-header">
       <h2 style="font-size:16px; font-weight:700;">Create New Jira Ticket</h2>
       <button class="drawer-close" onclick="closeCreateModal()">✕</button>
     </div>
-    <div class="modal-body" style="overflow:visible; display:flex; flex-direction:column; gap:14px;">
-      
+    <div class="modal-body" style="max-height: 70vh; overflow-y: auto; display:flex; flex-direction:column; gap:14px;">
+
       <div class="form-field" style="position:relative;">
         <label class="form-label">Project *</label>
         <div class="people-wrap" style="width:100%;">
@@ -2330,8 +2330,8 @@
         <label style="display:block;font-size:12px;font-weight:600;color:var(--gray-500);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Quick-note keyboard shortcut</label>
         <div style="position:relative;">
           <input id="cfg-shortcut" type="hidden" value="" />
-          <div id="cfg-shortcut-trigger" tabindex="0" 
-               onfocus="startRecordingShortcut()" 
+          <div id="cfg-shortcut-trigger" tabindex="0"
+               onfocus="startRecordingShortcut()"
                onblur="stopRecordingShortcut()"
                onkeydown="onShortcutKeydown(event)"
                style="width:100%; min-height:40px; padding:8px 12px; border:1.5px solid var(--border); border-radius:8px; font-size:14px; background:var(--surface); cursor:pointer; outline:none; transition:all 0.15s; display:flex; align-items:center; gap:4px; flex-wrap:wrap; box-shadow:var(--shadow-sm);">
@@ -2482,7 +2482,7 @@ async function loadCurrentUser() {
     CFG.me = user.accountId;
   } catch (err) {
     console.error("Nie udało się załadować profilu użytkownika:", err);
-    CFG.me = "current-user-fallback"; 
+    CFG.me = "current-user-fallback";
   }
 }
 
@@ -2535,33 +2535,33 @@ async function searchIssues(jql) {
   let allIssues = [];
   let nextPageToken = null;
   let pageCount = 0;
-  
+
   do {
     const payload = {
       jql,
       fields: LIST_FIELDS,
       maxResults: 100
     };
-    
+
     // Jeśli z poprzedniego zapytania dostaliśmy żeton kolejnej strony, doklejamy go
     if (nextPageToken) {
       payload.nextPageToken = nextPageToken;
     }
-    
+
     const result = await apiPost('search/jql', payload);
-    
+
     if (result && result.issues) {
       allIssues = allIssues.concat(result.issues);
     }
-    
+
     // Pobieramy żeton do następnej strony (jeśli istnieje)
     nextPageToken = result?.nextPageToken;
     pageCount++;
-    
+
     // Ustawiamy bezpieczny, maksymalny pułap na 10 stron (czyli do 1000 biletów na raz),
     // co gwarantuje pełną płynność aplikacji i zabezpiecza przed zawieszeniem programu.
   } while (nextPageToken && pageCount < 10);
-  
+
   return { issues: allIssues };
 }
 
@@ -2571,7 +2571,7 @@ let _renderingIssueKey = null; // set before renderADF so taskItems know which i
 // ==========================================================================
 // SEKCJA: ASYNCHRONICZNY SILNIK ENTERPRISE DATABASE (INDEXEDDB + STORAGE MIRROR)
 // ==========================================================================
-var _lnCurrentKey = null; 
+var _lnCurrentKey = null;
 
 function updateNoteIconOnBoard(key, hasNote) {
   const btn = document.querySelector(`.note-icon-btn[data-note-key="${key}"]`);
@@ -2640,15 +2640,15 @@ function dbGetAllNotes() {
 async function initIndexedDBWorkspace() {
   try {
     await initDB();
-    
+
     // Zapobiegamy pętli migracyjnej za pomocą dedykowanej flagi stanów trwałych
     const isMigrated = localStorage.getItem('notes_migrated_to_indexeddb_v2');
     const legacyIdxKey = 'ln_index';
-    
+
     if (!isMigrated) {
       let legacyIdx = [];
       try { legacyIdx = JSON.parse(localStorage.getItem(legacyIdxKey) || '[]'); } catch(e){}
-      
+
       if (legacyIdx.length > 0) {
         console.log(`[Migration] Przenoszenie ${legacyIdx.length} rekordów do IndexedDB...`);
         for (const k of legacyIdx) {
@@ -2666,7 +2666,7 @@ async function initIndexedDBWorkspace() {
 
     const allRecords = await dbGetAllNotes();
     state.localNotesMap = new Map();
-    
+
     allRecords.sort((a,b) => (b.data?.updated || '').localeCompare(a.data?.updated || ''));
     allRecords.forEach(r => {
       if (r.key) {
@@ -2675,7 +2675,7 @@ async function initIndexedDBWorkspace() {
         try { localStorage.setItem('ln_' + r.key, JSON.stringify(r.data)); } catch(e){}
       }
     });
-    
+
     state.localNotesIndex = allRecords.map(r => r.key).filter(Boolean);
     try { localStorage.setItem('ln_index', JSON.stringify(state.localNotesIndex)); } catch(e){}
   } catch(err) {
@@ -2695,21 +2695,21 @@ function lnSave(k, obj) {
   if (!k || !state.localNotesMap) return;
   obj.issueKey = k;
   obj.updated = new Date().toISOString();
-  
+
   state.localNotesMap.set(k, obj);
   if (!state.localNotesIndex.includes(k)) {
     state.localNotesIndex.unshift(k);
   }
-  
+
   // 1. Zapis produkcyjny do bazy głównej
   dbSaveNote(k, obj).catch(err => console.error("IndexedDB Error:", err));
-  
+
   // 2. Wstrzyknięcie kopii lustrzanej do LocalStorage (Dla okien Scratchpada Electrona)
   try {
     localStorage.setItem('ln_' + k, JSON.stringify(obj));
     localStorage.setItem('ln_index', JSON.stringify(state.localNotesIndex));
   } catch(e) {}
-  
+
   const countEl = document.getElementById('count-notes');
   if (countEl) countEl.textContent = state.localNotesMap.size;
   updateNoteIconOnBoard(k, true);
@@ -2719,16 +2719,16 @@ function lnDelete(k) {
   if (!k || !state.localNotesMap) return;
   state.localNotesMap.delete(k);
   state.localNotesIndex = state.localNotesIndex.filter(x => x !== k);
-  
+
   // 1. Usunięcie z bazy głównej
   dbDeleteNote(k).catch(err => console.error("IndexedDB Error:", err));
-  
+
   // 2. Czyszczenie kopii lustrzanej w LocalStorage
   try {
     localStorage.removeItem('ln_' + k);
     localStorage.setItem('ln_index', JSON.stringify(state.localNotesIndex));
   } catch(e) {}
-  
+
   const countEl = document.getElementById('count-notes');
   if (countEl) countEl.textContent = state.localNotesMap.size;
   updateNoteIconOnBoard(k, false);
@@ -2742,11 +2742,11 @@ function applySearchFilter(issues, query) {
     if (!i) return false;
     var summary = (i.fields && i.fields.summary) ? i.fields.summary.toLowerCase() : '';
     var key     = (i.key || '').toLowerCase();
-    
+
     // Pobieramy dane projektu nadrzędnego (Epiku), aby umożliwić wyszukiwanie kontekstowe
     var pKey    = (i.fields && i.fields.parent && i.fields.parent.key) ? i.fields.parent.key.toLowerCase() : '';
     var pSum    = (i.fields && i.fields.parent && i.fields.parent.fields && i.fields.parent.fields.summary) ? i.fields.parent.fields.summary.toLowerCase() : '';
-    
+
     return summary.indexOf(q) !== -1 || key.indexOf(q) !== -1 || pKey.indexOf(q) !== -1 || pSum.indexOf(q) !== -1;
   });
 }
@@ -2789,7 +2789,7 @@ function openQuickNote(event, key, summary) {
     event.preventDefault();
     event.stopPropagation(); // Blokuje otwarcie bocznej szuflady biletów przy kliknięciu notatki
   }
-  
+
   // Sprawdzamy czy interfejs Electrona jest gotowy i wysyłamy sygnał otwarcia okna notatek
   if (window.electronAPI && window.electronAPI.openQuickNoteWithKey) {
     window.electronAPI.openQuickNoteWithKey(key, summary);
@@ -3008,8 +3008,8 @@ const GRID = '90px minmax(160px, 1fr) 110px 120px 105px 75px 75px 75px';
 
   // EPIC_HIGHLIGHT_SYSTEM: Compute formatting overrides dynamically for high-density issue matrices
   const isEpic = f.issuetype && f.issuetype.name === 'Epic';
-  const epicRowStyles = isEpic 
-    ? 'background: var(--purple-light) !important; border-left: 3px solid var(--purple) !important; padding-left: 11px !important;' 
+  const epicRowStyles = isEpic
+    ? 'background: var(--purple-light) !important; border-left: 3px solid var(--purple) !important; padding-left: 11px !important;'
     : '';
   const epicBadgeHtml = isEpic
     ? `<span style="font-size:8.5px; font-weight:700; background:var(--purple-light); color:var(--purple); border:1px solid var(--purple-mid); padding:1px 4px; border-radius:4px; margin-right:6px; text-transform:uppercase; letter-spacing:0.02em; flex-shrink:0; line-height:1.2;">Epic</span>`
@@ -3775,7 +3775,7 @@ function _groupByParent(openIssues, doneIssues) {
 for (var n = 0; n < noneGroup.done.length; n++) {
           var dcandidate = noneGroup.done[n];
           var isEpic = dcandidate && dcandidate.fields && dcandidate.fields.issuetype && dcandidate.fields.issuetype.name === 'Epic';
-          
+
           // Jeśli zamknięte zgłoszenie to Epic, zatrzymujemy je stale w sekcji Independent Tasks
           if (isEpic) {
             keepNoneDone.push(dcandidate);
@@ -3870,12 +3870,12 @@ function _parentGroupHeaderHtml(g, gid, opts) {
       if (!isNone) {
         // Epic key link component completely unified to match the neutral Team chip styling and look identical
         var epicKeyBtnHtml = `<span class="status-chip" onclick="event.stopPropagation(); openDrawer('${escHtml(g.key)}');" style="font-size:10px !important; font-weight:600; padding:2px 6px !important; height:18px !important; line-height:1 !important; border-radius:4px !important; display:inline-flex; align-items:center; margin:0; cursor:pointer; user-select:none; text-transform:none !important; white-space:nowrap !important; flex-shrink:0;" title="Click to open Epic details">${escHtml(g.key)}</span>`;
-        
+
         // Clean text-only team filter layout option protected against horizontal text-wrapping shifts
         var teamCheckHtml = `<label class="status-chip ${showOthers ? 'active' : ''}" onclick="event.stopPropagation()" style="font-size:10px !important; font-weight:600; padding:2px 6px !important; height:18px !important; line-height:1 !important; border-radius:4px !important; display:inline-flex; align-items:center; margin:0; cursor:pointer; user-select:none; text-transform:none !important; white-space:nowrap !important; flex-shrink:0;" title="${showOthers ? "Hide team members' tasks" : 'Show all tasks in this epic assigned to other team members'}"><input type="checkbox" ${showOthers ? 'checked' : ''} onchange="toggleEpicShowOthers('${gid}','${epKey}')" style="display:none;"><span>${opts.othersLoading ? 'Load...' : 'Team'}</span></label>`;
-        
+
         var progressBar = `<div class="pg-progress-bar" style="width:34px; height:5px; margin-left:auto; border-radius:2px;" title="${doneCount}/${total} done (${pct}%)"><div class="pg-progress-fill" style="width:${pct}%; border-radius:2px;"></div></div>`;
-        
+
         colManagementHtml = `
           <div style="display:flex; align-items:center; justify-content:flex-start; width:100%; gap:4px; padding-right:4px; overflow:visible;">
             ${epicKeyBtnHtml}
@@ -4059,10 +4059,10 @@ function renderMyTasks(issues) {
       var sid = i.fields && i.fields.status && i.fields.status.id;
       return sid != null ? !excluded.has(String(sid)) : true;
     });
-    
+
     // Wprowadzamy filtr wyszukiwarki do walidacji widoczności całej grupy otwartej
     var dueFilteredOpen = applyDueDateFilter(applySearchFilter(statusFiltered, searchQ));
-    
+
     var epicIsOpen = g.parentIssue && (function() {
       var cat = g.parentIssue.fields
         && g.parentIssue.fields.status
@@ -4070,19 +4070,19 @@ function renderMyTasks(issues) {
         && g.parentIssue.fields.status.statusCategory.key;
       return cat !== 'done';
     })();
-    
+
     // Wprowadzamy filtr wyszukiwarki do walidacji widoczności samego nagłówka Epiku
     var epicPassesDue = epicIsOpen
       ? applyDueDateFilter(applySearchFilter([g.parentIssue], searchQ)).length > 0
       : false;
-      
+
     // Definiujemy poprawnie identyfikator grupy w tym zasięgu kodu
     var localFilterGid = 'mt-' + (g.key === '__none__' ? 'none' : g.key.replace(/\W+/g, '-'));
-    
+
     // Sprawdzamy czy w grupie są jakiekolwiek pasujące zadania zamknięte przy włączonym suwaku Done
     var showDoneOn = !!(state.parentGroupShowDone && state.parentGroupShowDone[localFilterGid]);
     var hasMatchingDone = showDoneOn && applySearchFilter(applyDueDateFilter(g.done), searchQ).length > 0;
-    
+
     if (dueFilteredOpen.length === 0 && !epicPassesDue && !hasMatchingDone) return false;
     return true;
   });
@@ -4724,12 +4724,12 @@ async function loadProjectUsers() {
     let allUsers = [];
     let startAt = 0;
     let hasMore = true;
-    
+
     // Pobieramy bezpieczną paczkę startową (do 500 użytkowników). Reszta obsługiwana jest dynamicznie w locie.
     while (hasMore && startAt < 500) {
       const res = await apiGet(`users/search?startAt=${startAt}&maxResults=100`);
       const batch = Array.isArray(res) ? res : [];
-      
+
       if (batch.length === 0) {
         hasMore = false;
       } else {
@@ -4814,7 +4814,7 @@ function getSprintDays() {
   const dow = today.getDay();
   const monday = new Date(today);
   monday.setDate(today.getDate() - (dow === 0 ? 6 : dow - 1) + state.weekOffset * 7);
-  
+
   const days = [];
   for (let i = 0; i < 5; i++) {
     const d = new Date(monday); d.setDate(monday.getDate() + i); days.push(d);
@@ -4872,7 +4872,7 @@ function renderFullPageCalendar() {
 
   const includeMe = state.tasksIncludeMe !== false;
   const selPeople = state.oversightUsers || [];
-  
+
   const calendarIssues = state.allIssues.filter(i => {
     const aid = i.fields?.assignee?.accountId;
     if (!aid) return false;
@@ -4881,7 +4881,7 @@ function renderFullPageCalendar() {
   });
 
   const byDate = {};
-  
+
   // A. JIRA ISSUES MAPPING: Process ticket deadlines
   for (const issue of calendarIssues) {
     const dd = issue.fields.duedate;
@@ -4913,7 +4913,7 @@ function renderFullPageCalendar() {
   });
 
   const rangeLabel = `${days[0].toLocaleDateString('en-GB', {day:'numeric', month:'short'})} – ${days[9].toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'})}`;
-  
+
 let headerHtml = `
     <style>
       .week-day.drag-hover-active {
@@ -4940,7 +4940,7 @@ let headerHtml = `
 
   // CAL_FIX: Grid container is locked to full height and strictly split 50/50 across available screen estate
   let gridHtml = `<div style="display: flex; flex-direction: column; gap: 14px; flex: 1; min-height: 0; overflow: hidden; padding-bottom: 14px;">`;
-  
+
   for (let weekIdx = 0; weekIdx < 2; weekIdx++) {
     gridHtml += `
       <div style="flex: 1; min-height: 0; display: flex; flex-direction: column;">
@@ -4967,14 +4967,14 @@ let displayTitle = note.summary && note.summary !== 'New Note Workspace' ? note.
 if (!displayTitle || displayTitle.startsWith('__QN_')) {
   displayTitle = !isSystemKey ? k : 'Quick Note';
 }
-          
+
           const tempDiv = document.createElement('div');
           tempDiv.innerHTML = engineMdToHtml(note.md || '');
           const plainText = tempDiv.textContent || tempDiv.innerText || '';
           const previewText = plainText.trim() ? (plainText.slice(0, 40) + (plainText.length > 40 ? '…' : '')) : 'Empty note text...';
 
 return `
-            <div draggable="true" 
+            <div draggable="true"
                  ondragstart="event.stopPropagation(); event.dataTransfer.setData('text/plain', '${escHtml(k)}'); event.dataTransfer.effectAllowed = 'move';"
                  ondragend="document.querySelectorAll('.week-day').forEach(d => d.classList.remove('drag-hover-active'));"
                  onclick="openQuickNote(event, '${escHtml(k)}', '${escHtml(displayTitle).replace(/'/g, "\\'")}')" style="
@@ -4988,7 +4988,7 @@ return `
                 <span style="font-size:10px; font-weight:700; color:var(--orange); font-family:monospace;">${isJira ? escHtml(k) : '📝 Personal Note'}</span>
                 <div style="display:flex; align-items:center; gap:4px;">
                   <span style="font-size:8.5px; font-weight:700; padding:1px 4px; border-radius:4px; background:var(--orange-light); color:var(--orange); text-transform:uppercase;">Note</span>
-                  <button onclick="event.stopPropagation(); if(confirm('Are you sure you want to permanently delete this scratchpad note?')) { lnDelete('${escHtml(k)}'); renderFullPageCalendar(); }" 
+                  <button onclick="event.stopPropagation(); if(confirm('Are you sure you want to permanently delete this scratchpad note?')) { lnDelete('${escHtml(k)}'); renderFullPageCalendar(); }"
                           style="background:none; border:none; color:var(--gray-400); cursor:pointer; font-size:10px; padding:0 2px; line-height:1; transition:color 0.1s; outline:none;"
                           onmouseover="this.style.color='var(--red)'"
                           onmouseout="this.style.color='var(--gray-400)'"
@@ -5036,7 +5036,7 @@ return `
 
 // CAL_FIX: Added strict display flex, hidden overflow, and isolated scrolling container triggers on the inside cells
       gridHtml += `
-        <div class="week-day${isToday ? ' today' : ''}${isSprintEnd ? ' sprint-end-day' : ''}" 
+        <div class="week-day${isToday ? ' today' : ''}${isSprintEnd ? ' sprint-end-day' : ''}"
              ondragover="event.preventDefault(); if(!this.classList.contains('drag-hover-active')) { document.querySelectorAll('.week-day').forEach(d => d.classList.remove('drag-hover-active')); this.classList.add('drag-hover-active'); }"
              ondragleave="if(event.clientX < this.getBoundingClientRect().left || event.clientX >= this.getBoundingClientRect().right || event.clientY < this.getBoundingClientRect().top || event.clientY >= this.getBoundingClientRect().bottom) { this.classList.remove('drag-hover-active'); }"
              ondrop="document.querySelectorAll('.week-day').forEach(d => d.classList.remove('drag-hover-active')); event.preventDefault(); const draggedKey = event.dataTransfer.getData('text/plain'); if(draggedKey) { const note = lnGet(draggedKey); if(note) { note.date = '${ds}'; lnSave(draggedKey, note); renderFullPageCalendar(); } }"
@@ -5046,7 +5046,7 @@ return `
               <div class="week-day-label" style="font-size: 10px; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: .04em;">${dayNames[(weekIdx * 5) + dayIdx]} ${isSprintEnd ? ' 🏁' : ''}</div>
               <div class="week-day-date" style="font-size:13px; font-weight:600; color:var(--gray-700); margin-top:1px;">${d.getDate()} ${d.toLocaleDateString('en-GB',{month:'short'})}</div>
             </div>
-            <button onclick="event.stopPropagation(); createNewLocalNoteWorkspace('${ds}')" 
+            <button onclick="event.stopPropagation(); createNewLocalNoteWorkspace('${ds}')"
                     style="background: none; border: 1px solid var(--border); width: 20px; height: 20px; border-radius: 4px; color: var(--gray-400); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; cursor: pointer; transition: all 0.1s; outline: none;"
                     onmouseover="this.style.borderColor='var(--orange)'; this.style.color='var(--orange)'; this.style.background='var(--orange-light)';"
                     onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--gray-400)'; this.style.background='none';"
@@ -5136,7 +5136,7 @@ function toggleStandupTeamSelection(cb) {
 async function searchStandupTeamLive(query) {
   const container = document.getElementById('standup-setup-list-container');
   if (!container) return;
-  
+
   const q = query.trim().toLowerCase();
   const savedIds = state._tempStandupIds || new Set();
 
@@ -5148,7 +5148,7 @@ async function searchStandupTeamLive(query) {
     if (ass && ass.accountId) usersMap[ass.accountId] = ass;
   });
   const localUsers = Object.values(usersMap);
-  
+
   let filteredLocal = localUsers;
   if (q) {
     filteredLocal = localUsers.filter(u => (u.displayName || '').toLowerCase().includes(q));
@@ -5160,7 +5160,7 @@ async function searchStandupTeamLive(query) {
   }
 
   filteredLocal.sort((a,b) => (a.displayName || '').localeCompare(b.displayName || ''));
-  
+
   let html = filteredLocal.map(u => renderStandupSetupRow(u, savedIds)).join('');
   container.innerHTML = html || '<div style="padding:20px; text-align:center; color:var(--gray-400); font-size:13px;">No local matches found. Keep typing to search corporate directory...</div>';
 
@@ -5179,7 +5179,7 @@ async function searchStandupTeamLive(query) {
 
       const renderedIds = new Set(filteredLocal.map(u => u.accountId));
       const extraUsers = results.filter(u => u.active && u.accountId && !renderedIds.has(u.accountId));
-      
+
       if (extraUsers.length > 0) {
         const extraHtml = extraUsers.map(u => renderStandupSetupRow(u, savedIds)).join('');
         if (container.innerHTML.includes('No local matches found')) {
@@ -5225,7 +5225,7 @@ function renderDailyStandup() {
   if (state.hideStandupSidebar === undefined) state.hideStandupSidebar = false;
   if (state.standupSprintFilter === undefined) state.standupSprintFilter = 'current';
   if (state.hideStandupNotes === undefined) state.hideStandupNotes = false;
-  
+
   if (state.standupSidebarWidth === undefined) {
     state.standupSidebarWidth = parseInt(localStorage.getItem('standup_sidebar_width') || '200', 10);
   }
@@ -5252,11 +5252,11 @@ function renderDailyStandup() {
     }
     const savedIds = state._tempStandupIds;
     const sortedAllUsers = Object.values(usersMap).sort((a,b) => (a.displayName || '').localeCompare(b.displayName || ''));
-    
+
     const currentTeamIds = new Set(currentTeam.map(t => t.id));
     const initialSuggestions = sortedAllUsers.filter(u => savedIds.has(u.accountId) || currentTeamIds.has(u.accountId));
     const finalSeedList = initialSuggestions.length > 0 ? initialSuggestions : sortedAllUsers.slice(0, 30);
-    
+
     let setupRowsHtml = finalSeedList.map(u => renderStandupSetupRow(u, savedIds)).join('');
 
     pane.innerHTML = `
@@ -5335,7 +5335,7 @@ function renderDailyStandup() {
     });
 
     leftListHtml += `
-      <div class="note-item${isActive ? ' active' : ''}" 
+      <div class="note-item${isActive ? ' active' : ''}"
            style="padding: 6px 10px !important; border-radius: 6px !important; border: 1px solid var(--border) !important; background: #ffffff !important; margin: 2px 4px 4px 4px !important; position: relative !important; cursor: pointer !important; box-shadow: var(--shadow-sm) !important; transition: background 0.15s, border-color 0.15s !important; display: flex !important; flex-direction: column !important; justify-content: center !important; box-sizing: border-box !important; height: 48px !important; ${isActive ? 'background: var(--blue-light) !important; border-color: var(--blue-mid) !important; border-left: 4px solid var(--blue) !important; box-shadow: 0 4px 12px -3px rgba(37,99,235,0.08) !important;' : ''}"
            onclick="state.activeStandupUser='${escHtml(u.accountId)}'; renderDailyStandup();"
            onmouseover="if(!${isActive}){this.style.background='var(--gray-50)';this.style.borderColor='var(--gray-300)';this.style.boxShadow='var(--shadow)';}"
@@ -5415,18 +5415,18 @@ function renderDailyStandup() {
       const sprint = Array.isArray(sprintsArray)
         ? (sprintsArray.find(s => s.state === 'active') || sprintsArray[sprintsArray.length - 1])
         : null;
-      
-      const sprintHtml = sprint 
-        ? `<span style="font-size:10px; color:var(--blue); font-weight:600; display:inline-flex; align-items:center; gap:3px; max-width:130px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="${escHtml(sprint.name)}">🏹 ${escHtml(sprint.name)}</span>` 
+
+      const sprintHtml = sprint
+        ? `<span style="font-size:10px; color:var(--blue); font-weight:600; display:inline-flex; align-items:center; gap:3px; max-width:130px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="${escHtml(sprint.name)}">🏹 ${escHtml(sprint.name)}</span>`
         : '';
-        
+
       const dueClass = dueDateClass(i.fields.duedate);
-      const dueHtml = i.fields.duedate 
-        ? `<span class="due-date ${dueClass || 'normal'}" style="font-size:10px; font-weight:600;">📅 ${formatDate(i.fields.duedate)}</span>` 
+      const dueHtml = i.fields.duedate
+        ? `<span class="due-date ${dueClass || 'normal'}" style="font-size:10px; font-weight:600;">📅 ${formatDate(i.fields.duedate)}</span>`
         : '';
 
       return `
-        <div onclick="openDrawer('${escHtml(i.key)}')" 
+        <div onclick="openDrawer('${escHtml(i.key)}')"
              style="background:var(--surface); border:1.5px solid var(--border); border-radius:6px; padding:8px 10px 10px 10px; margin-bottom:8px; cursor:pointer; box-shadow:var(--shadow-sm); transition:all .12s ease; min-width:0;"
              onmouseover="this.style.borderColor='var(--blue-mid)'; this.style.boxShadow='var(--shadow)';" onmouseout="this.style.borderColor='var(--border)'; this.style.boxShadow='var(--shadow-sm)';">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; min-width:0; gap:6px;">
@@ -5435,11 +5435,11 @@ function renderDailyStandup() {
               ${pri.dot} ${escHtml(pri.label)}
             </span>
           </div>
-          
+
           <div style="font-size:12px; font-weight:600; color:var(--gray-900); line-height:1.35; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; margin-bottom:5px; word-break:break-word; min-height:2.7em;" title="${escHtml(i.fields.summary)}">
             ${escHtml(i.fields.summary)}
           </div>
-          
+
           <div style="display:flex; flex-wrap:wrap; gap:5px; align-items:center; margin-bottom:5px;">
             ${sprintHtml}
             ${dueHtml}
@@ -5475,8 +5475,8 @@ function renderDailyStandup() {
     rightCockpitHtml = `
       <div style="flex:1; display:flex; flex-direction:column; overflow:hidden; padding: 0 16px 14px 16px !important; min-width:0; height:100%;">
         <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid var(--border); flex-wrap:wrap;">
-          <button onclick="state.hideStandupSidebar=!state.hideStandupSidebar; renderDailyStandup();" 
-                  class="btn-refresh" style="padding: 5px 10px; font-size: 11px; font-weight: 600;" 
+          <button onclick="state.hideStandupSidebar=!state.hideStandupSidebar; renderDailyStandup();"
+                  class="btn-refresh" style="padding: 5px 10px; font-size: 11px; font-weight: 600;"
                   title="${state.hideStandupSidebar ? 'Show Team List' : 'Hide Team List'}">
             ${state.hideStandupSidebar ? '📋 Show Sidebar' : '◀ Hide Sidebar'}
           </button>
@@ -5531,12 +5531,12 @@ function renderDailyStandup() {
               Notes ${localStandupNote.trim() ? '📝' : ''}
             </span>
             <button style="background: var(--blue-light) !important; color: var(--blue) !important; border: 1px solid var(--blue-mid) !important; padding: 2px 10px !important; border-radius: 5px !important; font-size: 10.5px !important; font-weight: 600 !important; cursor: pointer !important; font-family: inherit !important; transition: all 0.12s ease !important; outline: none;"
-                    onmouseover="this.style.background='var(--blue)'; this.style.color='#ffffff'; this.style.borderColor='var(--blue)';" 
+                    onmouseover="this.style.background='var(--blue)'; this.style.color='#ffffff'; this.style.borderColor='var(--blue)';"
                     onmouseout="this.style.background='var(--blue-light)'; this.style.color='var(--blue)'; this.style.borderColor='var(--blue-mid)';">
               ${state.hideStandupNotes ? '▼ Show Notes' : '▲ Hide Notes'}
             </button>
           </div>
-          <textarea placeholder="Add standup updates, key blockers, or operational notes..." 
+          <textarea placeholder="Add standup updates, key blockers, or operational notes..."
                     style="width:100%; height:66px; padding:8px 10px; font-family:inherit; font-size:13px; color:var(--gray-900); background:var(--surface); border:1.5px solid var(--border); border-radius:8px; outline:none; resize:none; transition:border-color .15s; display:${state.hideStandupNotes ? 'none !important' : 'block !important'};"
                     onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--border)'"
                     oninput="localStorage.setItem('standup_note_${selectedUser.accountId}', this.value)">${escHtml(localStandupNote)}</textarea>
@@ -5551,10 +5551,10 @@ function renderDailyStandup() {
     <style>
       .notes-list-panel[data-width-mode="full"] .sd-lbl-full { display: inline !important; }
       .notes-list-panel[data-width-mode="full"] .sd-lbl-med, .notes-list-panel[data-width-mode="full"] .sd-lbl-min { display: none !important; }
-      
+
       .notes-list-panel[data-width-mode="med"] .sd-lbl-med { display: inline !important; }
       .notes-list-panel[data-width-mode="med"] .sd-lbl-full, .notes-list-panel[data-width-mode="med"] .sd-lbl-min { display: none !important; }
-      
+
       .notes-list-panel[data-width-mode="min"] .sd-lbl-min { display: inline !important; }
       .notes-list-panel[data-width-mode="min"] .sd-lbl-full, .notes-list-panel[data-width-mode="min"] .sd-lbl-med { display: none !important; }
     </style>
@@ -5563,21 +5563,21 @@ function renderDailyStandup() {
       <div class="notes-list-panel" data-width-mode="${initialMode}" style="width:${initialWidth}px !important; min-width:${initialWidth}px !important; max-width:${initialWidth}px !important; display:${state.hideStandupSidebar ? 'none !important' : 'flex !important'}; flex-direction:column; overflow:hidden;">
         <div style="padding:4px 6px 12px; font-size:11px; font-weight:700; color:var(--gray-400); text-transform:uppercase; letter-spacing:.06em; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--gray-100); margin-bottom:8px; flex-shrink:0;">
           <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Team (${fullStandupTeam.length})</span>
-          <button onclick="state.managingStandupTeam=true; renderDailyStandup();" 
+          <button onclick="state.managingStandupTeam=true; renderDailyStandup();"
                   style="background: var(--blue-light) !important; color: var(--blue) !important; border: 1px solid var(--blue-mid) !important; padding: 2px 8px !important; border-radius: 4px !important; font-size: 10px !important; font-weight: 600 !important; cursor: pointer !important; font-family: inherit !important; transition: all 0.12s ease !important; box-shadow: var(--shadow-sm); outline: none; flex-shrink:0; margin-left:4px;">Setup</button>
         </div>
         <div style="padding: 2px; overflow-y:auto; flex:1;">
           ${leftListHtml}
         </div>
       </div>
-      
-      <div style="width: 6px; cursor: col-resize; background: transparent; position: relative; flex-shrink: 0; z-index: 95; transition: background 0.15s;" 
-           onmouseenter="this.style.background='var(--blue-mid)'" 
-           onmouseleave="this.style.background='transparent'" 
+
+      <div style="width: 6px; cursor: col-resize; background: transparent; position: relative; flex-shrink: 0; z-index: 95; transition: background 0.15s;"
+           onmouseenter="this.style.background='var(--blue-mid)'"
+           onmouseleave="this.style.background='transparent'"
            onmousedown="initStandupResize(event)">
            <div style="position: absolute; left: 2px; top: 0; bottom: 0; width: 1px; background: var(--border);"></div>
       </div>
-      
+
       <div class="notes-editor-panel" style="padding-top:10px; flex:1; min-width:0; overflow:hidden !important; display:flex; flex-direction:column;">
         ${rightCockpitHtml}
       </div>
@@ -5589,30 +5589,30 @@ function initStandupResize(e) {
   e.preventDefault();
   const startX = e.clientX;
   const startWidth = state.standupSidebarWidth || 200;
-  
+
   function doDrag(ev) {
     let newWidth = startWidth + (ev.clientX - startX);
     if (newWidth < 68) newWidth = 68;
     if (newWidth > 320) newWidth = 320;
-    
+
     state.standupSidebarWidth = newWidth;
-    
+
     const panel = document.querySelector('#pane-standup .notes-list-panel');
     if (panel) {
       panel.style.setProperty('width', newWidth + 'px', 'important');
       panel.style.setProperty('min-width', newWidth + 'px', 'important');
       panel.style.setProperty('max-width', newWidth + 'px', 'important');
-      
+
       let currentMode = 'min';
       if (newWidth >= 240) currentMode = 'full';
       else if (newWidth >= 140) currentMode = 'med';
-      
+
       if (panel.getAttribute('data-width-mode') !== currentMode) {
         panel.setAttribute('data-width-mode', currentMode);
       }
     }
   }
-  
+
   function stopDrag() {
     document.removeEventListener('mousemove', doDrag);
     document.removeEventListener('mouseup', stopDrag);
@@ -5620,7 +5620,7 @@ function initStandupResize(e) {
       localStorage.setItem('standup_sidebar_width', state.standupSidebarWidth);
     } catch(e) {}
   }
-  
+
   document.addEventListener('mousemove', doDrag);
   document.addEventListener('mouseup', stopDrag);
 }
@@ -5630,33 +5630,33 @@ function initStandupResize(e) {
   e.preventDefault();
   const startX = e.clientX;
   const startWidth = state.standupSidebarWidth || 200;
-  
+
   function doDrag(ev) {
     let newWidth = startWidth + (ev.clientX - startX);
     // Skrajne granice: 68px (szerokość awatara) do 320px (bardzo szeroki monitor)
     if (newWidth < 68) newWidth = 68;
     if (newWidth > 320) newWidth = 320;
-    
+
     state.standupSidebarWidth = newWidth;
-    
+
     // Zmiana rozmiaru węzła w drzewie DOM bez wymuszania redraw() tablicy Kanban
     const panel = document.querySelector('#pane-standup .notes-list-panel');
 if (panel) {
   panel.style.setProperty('width', newWidth + 'px', 'important');
   panel.style.setProperty('min-width', newWidth + 'px', 'important');
   panel.style.setProperty('max-width', newWidth + 'px', 'important');
-      
+
       // Dynamiczna zmiana atrybutu stanu w locie. Odznaki reagują natychmiastowo na ruch myszy!
       let currentMode = 'min';
       if (newWidth >= 240) currentMode = 'full';
       else if (newWidth >= 140) currentMode = 'med';
-      
+
       if (panel.getAttribute('data-width-mode') !== currentMode) {
         panel.setAttribute('data-width-mode', currentMode);
       }
     }
   }
-  
+
   function stopDrag() {
     document.removeEventListener('mousemove', doDrag);
     document.removeEventListener('mouseup', stopDrag);
@@ -5664,7 +5664,7 @@ if (panel) {
       localStorage.setItem('standup_sidebar_width', state.standupSidebarWidth);
     } catch(e) {}
   }
-  
+
   document.addEventListener('mousemove', doDrag);
   document.addEventListener('mouseup', stopDrag);
 }
@@ -5675,38 +5675,38 @@ function renderLocalNotes() {
   if (!pane) return;
 
   const idx = lnGetIndex();
-  
+
   // 1. Budujemy lewy panel - listę notatek (Scratchpad)
   let listHtml = '';
   idx.forEach(k => {
     const note = lnGet(k);
     if (!note) return;
     const isActive = _lnCurrentKey === k;
-    
+
     const isSystemKey = k.startsWith('__QN_');
-    const keyDisplayHtml = isSystemKey 
+    const keyDisplayHtml = isSystemKey
       ? `<div class="nli-key" style="font-size:11px; font-weight:700; color:var(--gray-400); text-transform:uppercase; letter-spacing:0.04em;">📝 Personal Note</div>`
       : `<div class="nli-key" style="font-family:monospace; font-size:11px; font-weight:700; color:${isActive ? 'var(--orange)' : 'var(--gray-500)'};">${escHtml(k)}</div>`;
-    
+
     let displayTitle = note.summary && note.summary !== 'New Note Workspace' ? note.summary : '';
     if (!displayTitle || displayTitle.startsWith('__QN_')) {
       displayTitle = !isSystemKey ? k : 'Quick Note';
     }
-    
+
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = engineMdToHtml(note.md || '');
     const plainText = tempDiv.textContent || tempDiv.innerText || '';
     const previewText = plainText.trim() ? (plainText.slice(0, 50) + (plainText.length > 50 ? '…' : '')) : 'Empty note text...';
     const dateStr = note.updated ? relativeDate(note.updated) : '—';
-    
+
     listHtml += `
       <div class="note-item ${isActive ? 'active' : ''}" onclick="_lnCurrentKey='${escHtml(k)}'; renderLocalNotes();">
         ${keyDisplayHtml}
         <div class="nli-summary" style="font-weight:600; font-size:13px; color:var(--gray-800); margin-top:3px; padding-right:4px;">${escHtml(displayTitle)}</div>
         <div style="font-size:11.5px; color:var(--gray-400); margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; padding-right:4px;">${escHtml(previewText)}</div>
         <div class="nli-date" style="font-size:10.5px; color:var(--gray-400); margin-top:6px; font-weight:500;">🕒 ${escHtml(dateStr)}</div>
-        <button class="nli-del-btn" 
-                onclick="event.stopPropagation(); if(confirm('Are you sure you want to permanently delete this scratchpad note?')) { lnDelete('${escHtml(k)}'); if(_lnCurrentKey==='${escHtml(k)}') _lnCurrentKey=null; renderLocalNotes(); }" 
+        <button class="nli-del-btn"
+                onclick="event.stopPropagation(); if(confirm('Are you sure you want to permanently delete this scratchpad note?')) { lnDelete('${escHtml(k)}'); if(_lnCurrentKey==='${escHtml(k)}') _lnCurrentKey=null; renderLocalNotes(); }"
                 title="Delete note">✕</button>
       </div>
     `;
@@ -5716,17 +5716,17 @@ function renderLocalNotes() {
   let workspaceHtml = '';
   if (_lnCurrentKey) {
     const note = lnGet(_lnCurrentKey);
-    
+
     let displayTitle = note && note.summary ? note.summary : '';
     if (displayTitle.startsWith('__QN_') || displayTitle === 'New Note Workspace' || displayTitle === 'Quick Note') {
       displayTitle = '';
     }
-    
+
     const noteDate = note && note.date ? note.date : '';
     const noteContentHtml = note ? engineMdToHtml(note.md || '') : '<p><br></p>';
 
     const isSystemKey = _lnCurrentKey.startsWith('__QN_');
-    
+
     let keyHeaderWidget = '';
     if (isSystemKey) {
       keyHeaderWidget = `
@@ -5736,7 +5736,7 @@ function renderLocalNotes() {
           </button>
           <div class="people-panel" id="ln-ticket-search-panel" onclick="event.stopPropagation()" style="position:absolute; top:calc(100% + 4px); left:0; width:340px; display:none; padding:6px; z-index:1100;">
             <div style="padding:2px 4px 6px 4px;">
-              <input id="ln-ticket-search-input" type="text" placeholder="Search active tasks or type ticket key..." 
+              <input id="ln-ticket-search-input" type="text" placeholder="Search active tasks or type ticket key..."
                      style="width:100%; padding:6px 10px; border:1px solid var(--border); border-radius:6px; font-size:12.5px; outline:none; font-family:inherit;"
                      oninput="searchTicketsForLocalNote(this.value, '${escHtml(_lnCurrentKey)}')" autocomplete="off" spellcheck="false" />
             </div>
@@ -5747,13 +5747,13 @@ function renderLocalNotes() {
     } else {
       keyHeaderWidget = `
         <div style="display:inline-flex; align-items:center; gap:6px;">
-          <span class="ne-key" onclick="openDrawer('${escHtml(_lnCurrentKey)}')" 
-                style="font-family:monospace; font-size:11.5px; background:var(--orange-light); padding:4px 10px; border:1px solid #fcd34d; border-radius:6px; color:var(--orange); font-weight:700; cursor:pointer; box-shadow:var(--shadow-sm);" 
+          <span class="ne-key" onclick="openDrawer('${escHtml(_lnCurrentKey)}')"
+                style="font-family:monospace; font-size:11.5px; background:var(--orange-light); padding:4px 10px; border:1px solid #fcd34d; border-radius:6px; color:var(--orange); font-weight:700; cursor:pointer; box-shadow:var(--shadow-sm);"
                 title="Click to view full Jira ticket details in modal ↗">
             ${escHtml(_lnCurrentKey)} ↗
           </span>
-          <button class="btn" onclick="unlinkLocalNoteFromTicket('${escHtml(_lnCurrentKey)}')" 
-                  style="font-size:11px; padding:2px 6px; height:22px; color:var(--red); border-color:#fecaca; background:var(--red-light); font-weight:600; border-radius:4px; cursor:pointer;" 
+          <button class="btn" onclick="unlinkLocalNoteFromTicket('${escHtml(_lnCurrentKey)}')"
+                  style="font-size:11px; padding:2px 6px; height:22px; color:var(--red); border-color:#fecaca; background:var(--red-light); font-weight:600; border-radius:4px; cursor:pointer;"
                   title="Remove ticket assignment and convert to personal note">✕ Unlink</button>
         </div>
       `;
@@ -5761,26 +5761,26 @@ function renderLocalNotes() {
 
     workspaceHtml = `
       <div style="flex:1; display:flex; flex-direction:column; background:var(--surface); overflow:hidden;">
-        
+
         <div class="notes-editor-meta" style="border-bottom:1px solid var(--border); padding:12px 20px; display:flex; align-items:center; justify-content:space-between; gap:16px;">
-          
+
 <div style="display:flex; align-items:center; gap:12px; flex:1; min-width:0;">
             <div style="flex-shrink:0; display:flex; align-items:center;">${keyHeaderWidget}</div>
-            <div id="ne-title-view" class="ne-title" contenteditable="true" data-placeholder="Untitled Note" 
+            <div id="ne-title-view" class="ne-title" contenteditable="true" data-placeholder="Untitled Note"
                  oninput="saveInlineNoteTitle('${escHtml(_lnCurrentKey)}', this.textContent)"
                  onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur();}"
                  style="flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:18px; font-weight:700; color:var(--gray-900); letter-spacing:-0.015em; outline:none; padding:2px 4px; border-radius:4px;">
               ${escHtml(displayTitle)}
             </div>
           </div>
-          
+
           <div style="display:flex; align-items:center; gap:16px; flex-shrink:0;">
             <input type="date" value="${escHtml(noteDate)}" onchange="saveInlineNoteDate('${escHtml(_lnCurrentKey)}', this.value)" style="padding:4px 8px; font-size:12px; flex-shrink:0;" />
             <button class="ne-btn ne-btn-del" onclick="lnDelete('${escHtml(_lnCurrentKey)}'); _lnCurrentKey=null; renderLocalNotes();">Delete</button>
           </div>
 
         </div>
-        
+
 <div class="notes-toolbar" style="padding:6px 20px; display:flex; gap:4px; align-items:center; overflow:visible;">
           <button onmousedown="event.preventDefault(); cmtExecInline('bold','${escHtml(_lnCurrentKey)}');"><b>B</b></button>
           <button onmousedown="event.preventDefault(); cmtExecInline('italic','${escHtml(_lnCurrentKey)}');"><i>I</i></button>
@@ -5790,7 +5790,7 @@ function renderLocalNotes() {
           <button onmousedown="event.preventDefault(); ModernEngine.toggleListBlock('ol'); handleNoteTextChange('${escHtml(_lnCurrentKey)}');">1. List</button>
           <button onmousedown="event.preventDefault(); ModernEngine.toggleListBlock('task'); handleNoteTextChange('${escHtml(_lnCurrentKey)}');">☐ Task</button>
           <span class="filter-bar-divider" style="height:14px; margin:0 4px; background:var(--border); width:1px;"></span>
-          
+
           <span class="ln-lp-wrap" style="position:relative;">
             <button onmousedown="event.preventDefault(); toggleLocalNotesLinkPopup();">🔗 Link</button>
             <div class="ln-lp" id="ln-notes-link-popup" style="position:absolute; top:calc(100% + 4px); left:0; display:none; background:#fff; border:1.5px solid var(--blue-mid); padding:12px; border-radius:9px; box-shadow:var(--shadow-lg); z-index:9999; width:260px;">
@@ -5864,7 +5864,7 @@ let noteSaveTimeout = null;
 function handleNoteTextChange(key) {
   const canvas = document.getElementById('notes-canvas');
   if (!canvas) return;
-  
+
   clearTimeout(noteSaveTimeout);
   noteSaveTimeout = setTimeout(() => {
     const note = lnGet(key) || { date: '', summary: 'Untitled Note' };
@@ -5880,12 +5880,12 @@ function updateToolbarStates() {
   if (!sel || !sel.rangeCount) return;
   let node = sel.anchorNode;
   if (node && node.nodeType === 3) node = node.parentElement;
-  
+
   if (!node) return;
-  
+
   const toolbar = document.querySelector('.notes-toolbar');
   if (!toolbar) return;
-  
+
   const buttons = toolbar.querySelectorAll('button');
   buttons.forEach(btn => {
     const text = btn.textContent.trim();
@@ -5908,10 +5908,10 @@ function createNewLocalNoteWorkspace(targetDate) {
   const newKey = '__QN_' + Date.now() + '__';
   // Jeśli funkcja została wywołana z kalendarza, używamy przekazanej daty. W przeciwnym wypadku bierzemy dzisiejszą.
   const dateToUse = targetDate || getTodayStr();
-  
+
   lnSave(newKey, { md: '', date: dateToUse, summary: 'Quick Note' });
   _lnCurrentKey = newKey;
-  
+
   if (state.activeTab === 'calendar') {
     // Odświeżamy kalendarz, by nowa pomarańczowa karta pojawiła się na nim natychmiast
     renderFullPageCalendar();
@@ -5962,7 +5962,7 @@ function applyLocalNotesLink(key) {
   document.getElementById('notes-canvas').focus();
   const htmlLink = `<a href="${url.replace(/"/g, '&quot;')}" target="_blank">${escHtml(text)}</a> `;
   ModernEngine.insertHTML(htmlLink);
-  
+
   toggleLocalNotesLinkPopup();
   if (typeof handleNoteTextChange === 'function') {
     handleNoteTextChange(key);
@@ -5974,7 +5974,7 @@ function toggleLocalNoteTicketSearch(e) {
   const panel = document.getElementById('ln-ticket-search-panel');
   if (!panel) return;
   const isHidden = panel.style.display === 'none';
-  
+
   closeAllInlineStatus();
   panel.style.display = isHidden ? 'block' : 'none';
   if (isHidden) {
@@ -5988,11 +5988,11 @@ function toggleLocalNoteTicketSearch(e) {
 function searchTicketsForLocalNote(query, oldKey) {
   const resultsEl = document.getElementById('ln-ticket-search-results');
   if (!resultsEl) return;
-  
+
   const q = query.trim().toLowerCase();
   const issues = state.allIssues || [];
   let filtered = issues;
-  
+
   if (q) {
     filtered = issues.filter(i => {
       const key = (i.key || '').toLowerCase();
@@ -6000,33 +6000,33 @@ function searchTicketsForLocalNote(query, oldKey) {
       return key.includes(q) || sum.includes(q);
     });
   }
-  
+
   const seen = new Set();
   filtered = filtered.filter(i => i && i.key && !seen.has(i.key) && seen.add(i.key));
-  
+
   const directKeyPattern = query.trim().toUpperCase();
   const looksLikeKey = /^[A-Z]+-\d+$/.test(directKeyPattern);
-  
+
   let itemsHtml = '';
-  
+
   filtered.slice(0, 6).forEach(i => {
     itemsHtml += `
-      <div class="status-inline-item" onclick="assignLocalNoteToTicket('${escHtml(oldKey)}', '${escHtml(i.key)}', '${escHtml(i.fields?.summary || '').replace(/'/g, "\\'")}')" 
+      <div class="status-inline-item" onclick="assignLocalNoteToTicket('${escHtml(oldKey)}', '${escHtml(i.key)}', '${escHtml(i.fields?.summary || '').replace(/'/g, "\\'")}')"
            style="padding:8px; cursor:pointer; display:flex; align-items:center; gap:6px; border-bottom:1px solid var(--gray-50);">
         <span style="font-family:monospace; font-weight:700; color:var(--blue); font-size:11.5px;">${escHtml(i.key)}</span>
         <span style="font-size:12px; color:var(--gray-700); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; flex:1;">${escHtml(i.fields?.summary || '')}</span>
       </div>`;
   });
-  
+
   if (looksLikeKey && !seen.has(directKeyPattern)) {
     itemsHtml = `
-      <div class="status-inline-item" onclick="assignLocalNoteToTicket('${escHtml(oldKey)}', '${escHtml(directKeyPattern)}', '${escHtml(directKeyPattern)}')" 
+      <div class="status-inline-item" onclick="assignLocalNoteToTicket('${escHtml(oldKey)}', '${escHtml(directKeyPattern)}', '${escHtml(directKeyPattern)}')"
            style="padding:8px; cursor:pointer; display:flex; align-items:center; gap:6px; border-bottom:1px solid var(--gray-50); background:var(--blue-light);">
         <span style="font-family:monospace; font-weight:700; color:var(--blue); font-size:11.5px;">🎯 Direct: ${escHtml(directKeyPattern)}</span>
         <span style="font-size:11px; color:var(--gray-400); font-style:italic; flex:1; text-align:right;">Link custom key</span>
       </div>` + itemsHtml;
   }
-  
+
   if (!itemsHtml) {
     resultsEl.innerHTML = '<div style="padding:10px; font-size:12px; color:var(--gray-400); text-align:center;">No tasks found. Type explicit key (e.g. OPSPR-3180) to pair.</div>';
   } else {
@@ -6038,21 +6038,21 @@ async function assignLocalNoteToTicket(oldKey, ticketKey, ticketSummary) {
   if (!oldKey || !ticketKey) return;
   const noteData = lnGet(oldKey);
   if (!noteData) return;
-  
+
   const existingNote = lnGet(ticketKey);
   if (existingNote && (existingNote.html || existingNote.md)) {
     if (!confirm(`Ticket ${ticketKey} already has an existing active scratchpad note. Overwrite it with this content?`)) return;
   }
-  
+
   noteData.issueKey = ticketKey;
   noteData.summary = ticketSummary || ticketKey;
   noteData.ticketKey = ticketKey;
   noteData.ticketSummary = ticketSummary || '';
-  
+
   lnSave(ticketKey, noteData);
   lnDelete(oldKey);
   _lnCurrentKey = ticketKey;
-  
+
   toast(`Note successfully mapped to ${ticketKey}`, 'success');
   renderLocalNotes();
 }
@@ -6061,17 +6061,17 @@ function unlinkLocalNoteFromTicket(ticketKey) {
   if (!ticketKey) return;
   const noteData = lnGet(ticketKey);
   if (!noteData) return;
-  
+
   const newKey = '__QN_' + Date.now() + '__';
   noteData.issueKey = newKey;
   noteData.summary = noteData.summary === ticketKey ? 'Quick Note' : noteData.summary;
   noteData.ticketKey = '';
   noteData.ticketSummary = '';
-  
+
   lnSave(newKey, noteData);
   lnDelete(ticketKey);
   _lnCurrentKey = newKey;
-  
+
   toast(`Note detached from ${ticketKey}`, 'success');
   renderLocalNotes();
   if (typeof renderTab === 'function') renderTab(state.activeTab);
@@ -6102,11 +6102,11 @@ window.addEventListener('storage', function(e) {
         dbDeleteNote(k);
       }
     }
-    
+
     // Natychmiastowe odświeżenie aktywnych widoków w głównym panelu dashboardu
     const notesCountEl = document.getElementById('count-notes');
     if (notesCountEl && state.localNotesMap) notesCountEl.textContent = state.localNotesMap.size;
-    
+
     if (state.activeTab === 'notes') renderLocalNotes();
     if (state.activeTab === 'calendar') renderFullPageCalendar();
     updateNoteIconOnBoard(k, !!e.newValue);
@@ -6120,13 +6120,13 @@ window.addEventListener('storage', function(e) {
 // ── NOWA FUNKCJA: Główny router renderujący zawartość aktywnych kart ──
 function renderTab(tab) {
   tab = tab || state.activeTab;
-  
+
   // BADGE_SYNC_FIX: Dynamically push live issue array lengths into the main navigation tab counters
   const myTasksCountEl = document.getElementById('count-myTasks');
   if (myTasksCountEl && Array.isArray(state.data.myTasks)) {
     myTasksCountEl.textContent = state.data.myTasks.length;
   }
-  
+
   const inboxCountEl = document.getElementById('count-inbox');
   if (inboxCountEl && Array.isArray(state.data.inbox)) {
     inboxCountEl.textContent = state.data.inbox.length;
@@ -6171,20 +6171,20 @@ async function switchTab(tab) {
   document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
   document.getElementById(`tab-btn-${tab}`).classList.add('active');
   document.getElementById(`pane-${tab}`).classList.add('active');
-  
+
   const searchWrap = document.getElementById('global-search-wrap');
   const inp = document.getElementById('global-search');
-  
+
   if (tab === 'notes' || tab === 'calendar' || tab === 'standup') {
     if (searchWrap) searchWrap.style.display = 'none';
   } else {
     if (searchWrap) searchWrap.style.display = '';
     if (inp) inp.value = (state.tabSearch && state.tabSearch[tab]) || '';
   }
-  
+
 // OPTYMALIZACJA RATE LIMIT: Odświeżamy Inbox tylko na żądanie (w momencie kliknięcia zakładki)
   if (tab === 'inbox') {
-    // Jeśli to pierwsze wejście i brak danych, pokazujemy spinner. 
+    // Jeśli to pierwsze wejście i brak danych, pokazujemy spinner.
     // Jeśli dane już są, zostawiamy je na ekranie i pobieramy aktualizację cicho w tle (brak layout shift/migania).
     if (!state.data.inbox) {
       document.getElementById('pane-inbox').innerHTML = `<div class="loading-state"><div class="spinner"></div> Loading project inbox…</div>`;
@@ -6273,12 +6273,12 @@ async function loadAllProjects() {
     let allProjs = [];
     let startAt = 0;
     let isLast = false;
-    
+
     // Pętla pobierająca kompletny zbiór projektów korporacyjnych bez twardego limitu
     while (!isLast) {
       const res = await apiGet(`project/search?startAt=${startAt}&maxResults=50&orderBy=NAME`);
       const list = Array.isArray(res) ? res : (res.values || []);
-      
+
       if (list.length === 0) {
         isLast = true;
       } else {
@@ -6480,7 +6480,7 @@ function renderInboxFilter() {
   return `
     <div class="oversight-filter" style="flex-wrap:wrap;gap:8px;overflow:visible;margin-bottom:8px;">
       <span class="oversight-filter-label">Filter:</span>
-      
+
       <div class="people-wrap">
         <button class="people-btn${sel.length?' has-selection':''}" onclick="toggleInboxDropdown(event)">
           ${escHtml(projLabel)} <span style="font-size:10px;">▾</span>
@@ -6565,10 +6565,10 @@ function clearInboxAllFilters() {
 
 function toggleInboxUnassigned(e) {
   if (e) e.stopPropagation(); // Halt bubbling phase immediately
-  
+
   // STATE CLEANUP FIX: Flatten all state flags before template engine executes
   closeAllDropdowns(null);
-  
+
   state.inboxUnassigned = !state.inboxUnassigned;
   persistState();
   reloadInbox();
@@ -6576,10 +6576,10 @@ function toggleInboxUnassigned(e) {
 
 function toggleInboxReportedByMe(e) {
   if (e) e.stopPropagation(); // Halt bubbling phase immediately
-  
+
   // STATE CLEANUP FIX: Flatten all state flags before template engine executes
   closeAllDropdowns(null);
-  
+
   state.inboxReportedByMe = !state.inboxReportedByMe;
   if (state.inboxReportedByMe) {
     state.inboxAssigneeFilter = []; // Mutually exclude conflicting assignee properties
@@ -6838,7 +6838,7 @@ async function loadInbox() {
     return;
   }
   const keys = state.inboxProjects.map(k => `"${k}"`).join(',');
-  
+
 let clauses = ['statusCategory != Done'];
   if (keys) clauses.push(`project in (${keys})`);
   if (state.inboxUnassigned) clauses.push('assignee is EMPTY');
@@ -6960,7 +6960,7 @@ function toggleReportedDone() {
 
 function updateAllIssuesCache() {
   const all = new Map();
-  
+
   // ST_FIX: Added 'myTasksDone' to the collection loop so the current user's completed items are indexed for the Standup board matrix.
   for (const tab of ['myTasks', 'myTasksDone', 'oversight', 'inbox']) {
     if (state.data[tab]) {
@@ -7142,7 +7142,7 @@ async function loadAll() {
   // Resetujemy pamięć i interfejs głównego obszaru roboczego (Tasks)
   state.data.myTasksDone = null;
   document.getElementById('pane-myTasks').innerHTML = `<div class="loading-state"><div class="spinner"></div> Loading your tasks…</div>`;
-  
+
   // Jeśli odświeżasz aplikację będąc fizycznie na karcie Inbox, czyścimy ją pod ponowne załadowanie
   if (state.activeTab === 'inbox') {
     document.getElementById('pane-inbox').innerHTML = `<div class="loading-state"><div class="spinner"></div> Loading…</div>`;
@@ -7182,7 +7182,7 @@ async function refreshAll() {
 
 // Inteligentny filtr wycinający powiadomienia o zadaniach stworzonych przeze mnie dla mnie
 window.addEventListener('DOMContentLoaded', () => {
-  
+
   // BONUS: Automatyczne czyszczenie pamięci powiadomień, aby aplikacja nie zwalniała z czasem
   try {
     const readKeys = JSON.parse(localStorage.getItem('notifReadKeys') || '[]');
@@ -7198,7 +7198,7 @@ window.addEventListener('DOMContentLoaded', () => {
     loadNotifications = async function(...args) {
       // Wywołaj oryginalne pobieranie powiadomień z Jiry
       await originalLoadNotifications.apply(this, args);
-      
+
 if (Array.isArray(state.allNotificationsRaw)) {
               state.allNotificationsRaw = state.allNotificationsRaw.filter(n => {
                 const f = n.fields || (n.issue && n.issue.fields);
@@ -7208,14 +7208,14 @@ if (Array.isArray(state.allNotificationsRaw)) {
                 const reporterId = f.reporter?.accountId;
 
                 if (actionActor === CFG.me) {
-                  // WENTYL BEZPIECZEŃSTWA: Jeśli tło systemowe przypisało akcję nam, ale bilet fizycznie 
+                  // WENTYL BEZPIECZEŃSTWA: Jeśli tło systemowe przypisało akcję nam, ale bilet fizycznie
                   // zgłosił ktoś inny (np. Ola na callu), oznacza to ingerencję zewnętrzną. Zachowujemy powiadomienie!
                   if (reporterId && reporterId !== CFG.me) {
                     return true;
                   }
                   return false; // Nasza w pełni odizolowana, własna aktywność — wyciszamy
                 }
-                
+
                 return true; // Aktywność kogoś innego — zawsze pokazujemy!
               });
 
@@ -7408,9 +7408,9 @@ function renderDrawer(issue, transitions, childItems = []) {
 
   // PREMIUM BUTTON TOKEN GENERATOR: Inline design matrix utility for micro header controls
   const makePremiumHeaderBtn = (onclickAction, labelText) => `
-    <button onclick="${onclickAction}" 
+    <button onclick="${onclickAction}"
             style="background: var(--blue-light) !important; color: var(--blue) !important; border: 1px solid var(--blue-mid) !important; padding: 3px 10px !important; border-radius: 5px !important; font-size: 10.5px !important; font-weight: 600 !important; cursor: pointer !important; font-family: inherit !important; transition: all 0.12s ease !important; outline: none; height: 22px; display: inline-flex; align-items: center; justify-content: center;"
-            onmouseover="this.style.background='var(--blue)'; this.style.color='#ffffff'; this.style.borderColor='var(--blue)';" 
+            onmouseover="this.style.background='var(--blue)'; this.style.color='#ffffff'; this.style.borderColor='var(--blue)';"
             onmouseout="this.style.background='var(--blue-light)'; this.style.color='var(--blue)'; this.style.borderColor='var(--blue-mid)';">
       ${labelText}
     </button>`;
@@ -7521,9 +7521,9 @@ function renderDrawer(issue, transitions, childItems = []) {
         ${worldChildren.length === 0
           ? `<span class="field-empty" style="padding:4px 2px;">No child items</span>`
           : worldChildren.map(s => `
-            <div onclick="openDrawer('${escHtml(s.key)}')" 
+            <div onclick="openDrawer('${escHtml(s.key)}')"
                  style="background: var(--surface) !important; border: 1.5px solid var(--border) !important; border-radius: 8px !important; padding: 10px 14px !important; cursor: pointer !important; box-shadow: var(--shadow-sm) !important; display: flex !important; align-items: center; justify-content: space-between; gap: 12px; transition: all 0.12s ease !important;"
-                 onmouseover="this.style.borderColor='var(--blue-mid)'; this.style.boxShadow='var(--shadow)';" 
+                 onmouseover="this.style.borderColor='var(--blue-mid)'; this.style.boxShadow='var(--shadow)';"
                  onmouseout="this.style.borderColor='var(--border)'; this.style.boxShadow='var(--shadow-sm)';">
               <span class="sub-key" style="font-size:11.5px; font-weight:700; color:var(--blue); font-family:monospace;">${escHtml(s.key)}</span>
               <span class="sub-summary" style="flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:12.5px; font-weight:500; color:var(--gray-800); padding:0 4px;">${escHtml(s.fields?.summary || '')}</span>
@@ -7539,7 +7539,7 @@ function renderDrawer(issue, transitions, childItems = []) {
         <span>Linked Issues (${issuelinks.length})</span>
         <div id="link-actions-${k}">${makePremiumHeaderBtn(`toggleLinkInputInline('${k}')`, '+ Link Ticket')}</div>
       </div>
-      
+
       <div id="link-input-zone-${k}" style="display:none; margin-bottom:12px; padding:4px 2px; border-bottom:1px dashed var(--gray-100); padding-bottom:10px;">
         <div style="display:flex; gap:6px; align-items:center;">
           <input id="link-target-input-${k}" type="text" placeholder="Type key to link (e.g. OPSPR-100)..." style="flex:1; padding:5px 9px; font-size:12.5px; border:1.5px solid var(--border); border-radius:6px; outline:none; font-family:inherit; background:var(--surface); color:var(--gray-900);" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--border)'" onkeydown="if(event.key==='Enter') submitLinkInline('${k}')" />
@@ -7556,9 +7556,9 @@ function renderDrawer(issue, transitions, childItems = []) {
               const dir    = l.outwardIssue ? l.type?.outward : l.type?.inward;
               if (!linked) return '';
               return `
-                <div onclick="openDrawer('${escHtml(linked.key)}')" 
+                <div onclick="openDrawer('${escHtml(linked.key)}')"
                      style="background: var(--surface) !important; border: 1.5px solid var(--border) !important; border-radius: 8px !important; padding: 10px 14px !important; cursor: pointer !important; box-shadow: var(--shadow-sm) !important; display: flex !important; align-items: center; justify-content: space-between; gap: 12px; transition: all 0.12s ease !important;"
-                     onmouseover="this.style.borderColor='var(--blue-mid)'; this.style.boxShadow='var(--shadow)';" 
+                     onmouseover="this.style.borderColor='var(--blue-mid)'; this.style.boxShadow='var(--shadow)';"
                      onmouseout="this.style.borderColor='var(--border)'; this.style.boxShadow='var(--shadow-sm)';">
                   <span class="linked-type" style="font-size:10.5px; font-weight:600; color:var(--gray-400); text-transform:lowercase; min-width:80px;">${escHtml(dir||'')}</span>
                   <span class="sub-key" style="font-size:11.5px; font-weight:700; color:var(--blue); font-family:monospace;">${escHtml(linked.key)}</span>
@@ -7575,7 +7575,7 @@ function renderDrawer(issue, transitions, childItems = []) {
       <div style="font-size:11px; font-weight:700; color:var(--gray-500); text-transform:uppercase; letter-spacing:.08em; margin-bottom:12px; border-bottom:1.5px solid var(--gray-100); padding-bottom:6px;">
         Comments (${comments.length})
       </div>
-      
+
       <div class="comment-form" id="comment-form-${k}">
         <div class="comment-type-tabs">
           <button class="cmt-tab active" id="cmt-tab-normal-${k}" onclick="setCmtType('${k}','normal')">Comment</button>
@@ -7610,7 +7610,7 @@ function renderDrawer(issue, transitions, childItems = []) {
           </div>
         </div>
       </div>
-      
+
       ${comments.length === 0 ? '<p class="field-empty" style="margin-top:14px; text-align:center; font-style:italic;">No comments yet.</p>' :
         `<div class="comments-list" style="margin-top:16px;">${comments.map(c => {
           const internal = c.visibility?.value === 'Service Desk Team' || c.visibility?.type === 'role' || c.jsdPublic === false;
@@ -7630,7 +7630,7 @@ function renderDrawer(issue, transitions, childItems = []) {
   // D. FINAL ASSEMBLY: Merge the asymmetric double column system architecture panels cleanly with layout alignment overrides
   document.getElementById('drawer-body').innerHTML = `
     <div style="display: flex; min-height: 100%; width: 100%; overflow: visible; box-sizing: border-box; background: var(--gray-50);">
-      
+
       <div style="flex: 1; min-width: 0; padding: 16px 8px 32px 18px; display: flex; flex-direction: column;">
         ${chainReactionAlertHtml}
         ${descHtml}
@@ -7638,7 +7638,7 @@ function renderDrawer(issue, transitions, childItems = []) {
         ${linksHtml}
         ${commentsHtml}
       </div>
-      
+
       <div class="drawer-sidebar" style="width: 260px; min-width: 260px; flex-shrink: 0; border-left: 1px solid var(--border); background: var(--surface); padding: 18px 18px 32px 18px; box-sizing: border-box; display: flex; flex-direction: column;">
         ${sidebarHtml}
       </div>
@@ -7700,13 +7700,13 @@ async function clearDueDate(key) {
 function editDescription(key) {
   const view = document.getElementById('desc-view');
   if (!view) return;
-  
+
   // Safe string retrieval to bypass standard placeholder content text
   const currentText = view.innerText.trim() === 'No description has been added to this ticket...' ? '' : view.innerText.trim();
-  
+
   // Inline substitution of the view area to a premium textarea box
   view.innerHTML = `<textarea id="desc-textarea" placeholder="Provide full context, reproduction steps, or requirements…" style="width: 100%; min-height: 120px; padding: 10px; font-family: inherit; font-size: 13px; border: 1.5px solid var(--border); border-radius: 6px; outline: none; resize: vertical; background: var(--surface); color: var(--gray-900); line-height: 1.5;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--border)'">${escHtml(currentText)}</textarea>`;
-  
+
   // UI_ALIGNMENT: Swap header buttons inline on the exact same horizontal layout plane
   const actionsContainer = document.getElementById(`desc-actions-${key}`);
   if (actionsContainer) {
@@ -7868,9 +7868,9 @@ async function onCommentInput(e, key) {
 const caretRect = getCaretRect();
         if (caretRect) {
           dd.style.left = Math.min(caretRect.left, window.innerWidth - 340) + 'px';
-          
+
           // COLLISION_FIX: Detect screen boundary limits to automatically flip the popper upward if trapped near the bottom
-          const expectedMenuHeight = 220; 
+          const expectedMenuHeight = 220;
           const spaceBelow = window.innerHeight - caretRect.bottom;
           if (spaceBelow < expectedMenuHeight && caretRect.top > expectedMenuHeight) {
             dd.style.top = 'auto';
@@ -8012,7 +8012,7 @@ function cmtExec(key, cmd, value) {
   const el = document.getElementById(`comment-ta-${key}`);
   if (!el) return;
   el.focus();
-  
+
   if (cmd === 'formatBlock') {
     const sel = window.getSelection();
     if (!sel || !sel.rangeCount) return;
@@ -8617,7 +8617,7 @@ document.addEventListener('click', (e) => {
   // Handle standard peripheral overlay states
   const dd = globalMentionDd();
   if (dd && !dd.contains(e.target)) hideMentionDd();
-  
+
   if (state.notifOpen && !e.target.closest('.notif-btn')) {
     state.notifOpen = false;
     document.getElementById('notif-panel')?.classList.remove('open');
@@ -9369,20 +9369,20 @@ function updateShortcutDisplay(shortcutStr) {
   const trigger = document.getElementById('cfg-shortcut-trigger');
   const hiddenInput = document.getElementById('cfg-shortcut');
   const placeholder = document.getElementById('cfg-shortcut-placeholder');
-  
+
   hiddenInput.value = shortcutStr;
   const oldBadges = trigger.querySelectorAll('.kbd-badge');
   oldBadges.forEach(b => b.remove());
-  
+
   if (!shortcutStr) {
     placeholder.style.display = '';
     return;
   }
-  
+
   placeholder.style.display = 'none';
   const parts = shortcutStr.split('+');
   const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
-  
+
   parts.forEach(part => {
     let label = part;
     if (part === 'CommandOrControl') label = isMac ? '⌘ Cmd' : 'Ctrl';
@@ -9395,7 +9395,7 @@ function updateShortcutDisplay(shortcutStr) {
 }
 
 function onShortcutKeydown(e) {
-  if (e.key === 'Tab') return; 
+  if (e.key === 'Tab') return;
   e.preventDefault();
   e.stopPropagation();
   if (e.key === 'Escape') { updateShortcutDisplay(''); return; }
@@ -9425,13 +9425,13 @@ window.addEventListener('DOMContentLoaded', async () => {
   window.addEventListener('focus', () => {
     if (!state.localNotesMap) return;
     let needRefresh = false;
-    
+
     state.localNotesMap.forEach((note, k) => {
       // Interweniujemy tylko dla automatycznych notatek szybkiego wywołania kalendarza
       if (k.startsWith('__QN_')) {
         const isEmptyBody = !note.md || note.md.trim() === '';
         const isDefaultTitle = !note.summary || note.summary === 'Quick Note' || note.summary.trim() === '';
-        
+
         // Jeśli użytkownik zamknął okno, nie wpisując ani słowa i nie zmieniając tytułu:
         if (isEmptyBody && isDefaultTitle) {
           lnDelete(k);
@@ -9439,7 +9439,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         }
       }
     });
-    
+
     // Jeśli posprzątaliśmy puste kontenery, odświeżamy kalendarz w locie
     if (needRefresh && state.activeTab === 'calendar') {
       renderFullPageCalendar();
@@ -9458,12 +9458,12 @@ window.addEventListener('DOMContentLoaded', async () => {
   if (window.electronAPI?.registerNotifications) {
     window.electronAPI.registerNotifications();
   }
-  
+
   await loadCurrentUser();
   await loadFieldConfig();
-  
+
   document.getElementById('count-notes').textContent = lnCount();
-  
+
   if (window.electronAPI && window.electronAPI.onShowQuickNote) {
     window.electronAPI.onShowQuickNote(function(key) {
       openQuickNote(null, key || '', key || '');
@@ -9479,7 +9479,7 @@ window.addEventListener('DOMContentLoaded', async () => {
       if (data && data.key) { openDrawer(data.key); }
     });
   }
-  
+
   loadAll().then(() => startPolling());
 });
 </script>

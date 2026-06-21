@@ -273,7 +273,7 @@ app.get('/teams', async (req, res) => {
     }
     const teams = Object.values(teamsMap).sort((a, b) => a.name.localeCompare(b.name));
     console.log(`[teams] Łącznie w pamięci: ${teams.length} zespołów (zaktualizowano na bazie ${(j.issues||[]).length} najnowszych biletów)`);
-    
+
 // Zapisujemy rozszerzoną listę na stałe do pliku config.json
     _cfg.persistedTeams = teamsMap;
     try {

@@ -69,7 +69,7 @@ async function loadNotifications() {
     [...created, ...assigned, ...mentions].forEach(i => {
       let changeDescription = '';
       let actor = i._notifType === 'created' ? i.fields.assignee : i.fields.reporter;
-      
+
       // Audyt ostatniej mutacji w historii zgloszenia (Smart Enterprise Core)
       let statusChange = null;
       let duedateChange = null;
@@ -128,21 +128,21 @@ async function loadNotifications() {
           }
         }
       }
-      
+
       if (!changeDescription) {
         if (i._notifType === 'mention') changeDescription = 'Added a comment';
         else if (i._notifType === 'created') changeDescription = 'Created / assigned this issue';
         else changeDescription = 'Modified ticket details';
       }
-      
+
       i._notifActor = actor;
       i._notifChangeDesc = changeDescription;
       i._notifStatusChange = statusChange;
       i._notifDuedateChange = duedateChange;
-      
+
       mergedMap.set(i.key, i);
     });
-    
+
     state.allNotificationsRaw = Array.from(mergedMap.values());
 
     // Obliczamy stan nieprzeczytanych na podstawie klucza kompozytowego (Klucz + Data Modyfikacji)
@@ -161,7 +161,7 @@ function _checkForNewNotifications(issues) {
 
   if (_knownNotifKeys === null) {
     _knownNotifKeys = new Set(issues.map(i => i.key + '_' + (i.fields?.updated || '')));
-    
+
     // Ciche powiadomienie systemowe na start aplikacji
     window.electronAPI.showNotification({
       title: 'Jira Notifications',
@@ -175,7 +175,7 @@ function _checkForNewNotifications(issues) {
   for (const issue of issues) {
     if (sent >= 3) break;
     const compositeKey = issue.key + '_' + (issue.fields?.updated || '');
-    
+
     if (_knownNotifKeys.has(compositeKey)) continue;
     _knownNotifKeys.add(compositeKey);
 
@@ -184,7 +184,7 @@ function _checkForNewNotifications(issues) {
     let prefix = '🎯 Assigned';
     if (issue._notifType === 'mention') prefix = '💬 Mentioned';
     if (issue._notifType === 'created') prefix = '💼 Team Update';
-    
+
     const statusName = (issue.fields?.status?.name || '').toLowerCase();
     if (statusName.includes('block') || statusName.includes('hold')) {
       prefix = '🔥 BLOCKER / HOLD';
@@ -249,10 +249,10 @@ function markOneRead(key, updatedTimestamp, event) {
   const compositeKey = key + '_' + (updatedTimestamp || '');
   state.notifReadKeys.add(compositeKey);
   _saveReadKeys();
-  
+
   state.notifUnread = Math.max(0, state.notifUnread - 1);
   renderNotifBadge();
-  
+
   const el = document.getElementById(`ni-${key}`);
   if (el) {
     el.classList.remove('unread');
@@ -310,7 +310,7 @@ function renderNotifContent() {
 
     if (i._notifType === 'assigned') detailBadgesHtml += '<div style="display:inline-flex; align-items:center; font-size:11px; margin-top:6px; font-weight:600; background:var(--gray-50); border:1px solid var(--gray-100); padding:2px 6px; border-radius:4px; margin-right:6px; color:var(--gray-700);">Assigned to Me</div>';
     else if (i._notifType === 'mention') detailBadgesHtml += '<div style="display:inline-flex; align-items:center; font-size:11px; margin-top:6px; font-weight:600; background:var(--gray-50); border:1px solid var(--gray-100); padding:2px 6px; border-radius:4px; margin-right:6px; color:var(--gray-700);">Mentioned</div>';
-    
+
     if (i._notifStatusChange) {
       const fromC = getJiraColor(i._notifStatusChange.from);
       const toC = getJiraColor(i._notifStatusChange.to);
