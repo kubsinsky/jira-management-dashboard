@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Quick Note</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<script src="editor-engine.js"></script>
+<style>
+  *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+  html,body { height:100%; overflow:hidden; background:transparent; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; font-size:14px; color:#0f172a; }
+  .card { display:flex; flex-direction:column; height:100vh; background:#fff; border-radius:14px; box-shadow:0 20px 60px rgba(0,0,0,.4); overflow:hidden; }
+  .header { background:#2563eb; padding:12px 16px 11px; border-radius:14px 14px 0 0; -webkit-app-region:drag; flex-shrink:0; display:flex; align-items:center; justify-content:space-between; }
+  .header * { -webkit-app-region:no-drag; }
+  .header-title { color:#fff; font-size:14px; font-weight:700; cursor:pointer; border-radius:5px; padding:1px 5px; margin:-1px -5px; transition:background .12s; }
+  .header-title:hover { background:rgba(255,255,255,.12); }
+  .header-title[contenteditable="true"] { cursor:text; background:rgba(255,255,255,.18); outline:none; }
+  .header-sub { color:rgba(255,255,255,.7); font-size:11px; margin-top:2px; }
+  .btn-close { background:rgba(255,255,255,.2); border:none; color:#fff; width:26px; height:26px; border-radius:7px; cursor:pointer; font-size:14px; display:flex; align-items:center; justify-content:center; }
+  .btn-close:hover { background:rgba(255,255,255,.35); }
+  .body { flex:1; padding:12px 16px; display:flex; flex-direction:column; gap:8px; overflow:hidden; }
+
+  /* ── Ticket search ── */
+  .ticket-wrap { position:relative; flex-shrink:0; }
+  .ticket-search { width:100%; padding:8px 11px 8px 32px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:13px; font-family:inherit; outline:none; color:#0f172a; transition:border .15s; background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 16 16' fill='%2394a3b8'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398l3.85 3.85a1 1 0 0 0 1.415-1.415l-3.868-3.833zm-5.242 1.156a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E") no-repeat 10px center; }
+  .ticket-search:focus { border-color:#2563eb; }
+  .ticket-search::placeholder { color:#94a3b8; }
+  .ticket-dd { position:absolute; top:calc(100% + 4px); left:0; right:0; background:#fff; border:1.5px solid #bfdbfe; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,.12); z-index:100; max-height:200px; overflow-y:auto; display:none; }
+  .ticket-dd-item { padding:8px 12px; cursor:pointer; display:flex; align-items:baseline; gap:8px; font-size:13px; }
+  .ticket-dd-item:hover { background:#eff6ff; }
+  .ticket-dd-item .td-key { font-weight:700; color:#2563eb; flex-shrink:0; font-size:12px; }
+  .ticket-dd-item .td-summary { color:#334155; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .ticket-dd-empty { padding:10px 12px; font-size:12px; color:#94a3b8; }
+  .ticket-dd-loading { padding:10px 12px; font-size:12px; color:#94a3b8; }
+  .ticket-chip { display:flex; align-items:center; gap:6px; background:#eff6ff; border:1.5px solid #bfdbfe; border-radius:7px; padding:5px 10px; font-size:12px; }
+  .ticket-chip .tc-key { font-weight:700; color:#2563eb; }
+  .ticket-chip .tc-summary { color:#334155; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:200px; }
+  .ticket-chip .tc-clear { background:none; border:none; color:#94a3b8; cursor:pointer; font-size:14px; padding:0 0 0 2px; line-height:1; }
+  .ticket-chip .tc-clear:hover { color:#ef4444; }
+  .toolbar { display:flex; gap:4px; flex-wrap:wrap; padding:5px 0; border-bottom:1px solid #e2e8f0; flex-shrink:0; position:relative; }
+  .toolbar button { padding:3px 9px; border:1px solid #e2e8f0; border-radius:5px; background:#fff; cursor:pointer; font-size:12px; color:#334155; font-family:inherit; }
+  .toolbar button:hover { background:#eff6ff; color:#2563eb; border-color:#bfdbfe; }
+  .editor { flex:1; width:100%; border:1.5px solid #e2e8f0; border-radius:8px; padding:10px 12px; outline:none; font-size:13px; line-height:1.7; color:#0f172a; min-height:60px; overflow-y:auto; background:#fff; cursor:text; }
+  .editor:focus { border-color:#2563eb; }
+  .editor:empty::before { content:attr(data-placeholder); color:#94a3b8; pointer-events:none; }
+  .editor p { margin:0 0 1px; min-height:1.4em; }
+  .editor ul,.editor ol { padding-left:22px; margin:3px 0; }
+  .editor li { margin:1px 0; }
+  .editor .task-list { list-style:none; padding-left:2px; }
+  .editor .task-item { display:flex; align-items:baseline; gap:5px; }
+  .editor .task-cb { cursor:pointer; flex-shrink:0; user-select:none; font-size:14px; }
+  .editor .task-item.checked { color:#94a3b8; }
+  .editor .task-item.checked .task-cb { color:#16a34a; }
+  .editor .task-item.checked span:not(.task-cb) { text-decoration:line-through; }
+  .editor a { color:#2563eb; text-decoration:underline; cursor:pointer; }
+  .editor strong,.editor b { font-weight:700; }
+  .editor em,.editor i { font-style:italic; }
+  .editor s,.editor del { text-decoration:line-through; }
+
+  .date-row { display:flex; align-items:center; gap:8px; flex-shrink:0; }
+  .date-label { font-size:12px; color:#64748b; }
+  .date-input { padding:5px 8px; border:1.5px solid #e2e8f0; border-radius:6px; font-size:12px; font-family:inherit; color:#334155; outline:none; }
+  .date-input:focus { border-color:#2563eb; }
+  .footer { padding:9px 16px 12px; border-top:1px solid #e2e8f0; display:flex; gap:8px; justify-content:flex-end; flex-shrink:0; }
+  .btn { padding:7px 18px; border-radius:7px; font-size:13px; font-family:inherit; cursor:pointer; border:1.5px solid #e2e8f0; background:#fff; color:#334155; }
+  .btn:hover { background:#f1f5f9; }
+  .btn-primary { background:#2563eb; color:#fff; border-color:#2563eb; font-weight:600; }
+  .btn-primary:hover { background:#1d4ed8; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="header">
+    <div class="header-title" id="note-header-title"
+         onclick="startTitleEdit()"
+         onblur="finishTitleEdit(false)"
+         onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur();}else if(event.key==='Escape'){event.preventDefault();event.stopPropagation();finishTitleEdit(true);}"
+         title="Click to rename">Quick Note</div>
+    <button class="btn-close" onclick="closeWin()">✕</button>
+  </div>
+  <div class="body">
+    <div class="ticket-wrap">
+      <div id="ticket-chip" class="ticket-chip" style="display:none;">
+        <span class="tc-key" id="tc-key"></span>
+        <span class="tc-summary" id="tc-summary"></span>
+        <button class="tc-clear" onclick="clearTicketSelection()" title="Remove">✕</button>
+      </div>
+      <input id="ticket-search" class="ticket-search" type="text" placeholder="Assign to ticket — type to search…" autocomplete="off" spellcheck="false"
+        oninput="onTicketSearch(this.value)"
+        onfocus="onTicketSearchFocus()"
+        onblur="onTicketSearchBlur()" />
+      <div id="ticket-dd" class="ticket-dd"></div>
+    </div>
+
+    <div class="toolbar">
+      <button onmousedown="fmt(event,'bold')"><b>B</b></button>
+      <button onmousedown="fmt(event,'italic')"><i>I</i></button>
+      <button onmousedown="fmt(event,'strikeThrough')"><s>S</s></button>
+      <button onmousedown="fmt(event,'insertUnorderedList')">• List</button>
+      <button onmousedown="fmt(event,'insertOrderedList')">1. List</button>
+      <button onmousedown="insertTask(event)">☐ Task</button>
+      <button onmousedown="event.preventDefault(); const ed=document.getElementById('editor'); engineInsertLink(ed, onEditorInput);">🔗 Link</button>
+    </div>
+
+    <div id="editor" class="editor" contenteditable="true"
+         data-placeholder="Type your note…"
+         oninput="onEditorInput()"
+         onpaste="handlePaste(event)"
+         onkeydown="editorKeydown(event)"
+         onclick="handleEditorClick(event)"></div>
+    <div class="date-row">
+      <span class="date-label">📅 Date:</span>
+      <input type="date" id="qn-date" class="date-input" />
+    </div>
+  </div>
+  <div class="footer">
+    <button class="btn" onclick="newNote()">+ New Note</button>
+    <button class="btn" onclick="closeWin()">Cancel</button>
+    <button class="btn btn-primary" onclick="saveNote()">Save Note</button>
+  </div>
+</div>
+
+<script>
+  var LN_PRE='ln_', LN_IDX='ln_index';
+  var QN_KEY='__QUICK_NOTE__';
+  var QN_PREFIX='__QN_';
+  var _currentQnKey=null;
+  var _selTick=null, _tickBlur=null, _lpRange=null, _titleBeforeEdit='Quick Note';
+
+  // ── MOSTKI SYNCHRONIZACYJNE: Przekierowanie operacji na wspólny silnik ──
+  function mdToHtml(md) { return engineMdToHtml(md); }
+  function htmlToMd(html) { return engineHtmlToMd(html); }
+
+function fmt(e,cmd){
+    e.preventDefault();
+    document.getElementById('editor').focus();
+    ModernEngine.toggleInline(cmd);
+  }
+
+  function insertTask(e){
+    e.preventDefault();
+    const ed = document.getElementById('editor');
+    if (ed) engineInsertTask(ed, onEditorInput);
+  }
+
+  handleEditorClick = function(e){
+    const ed = document.getElementById('editor');
+    engineClickHandler(e, ed, onEditorInput);
+  }
+
+  function editorKeydown(e){
+    const ed = document.getElementById('editor');
+    engineKeydownHandler(e, ed, onEditorInput);
+    if ((e.metaKey||e.ctrlKey) && e.key==='Return'){e.preventDefault();saveNote();}
+  }
+
+  // FIX: Podpięcie zunifikowanego mechanizmu przechwytywania wklejanych adresów URL
+  function handlePaste(e){
+    const ed = document.getElementById('editor');
+    enginePasteHandler(e, ed, onEditorInput);
+  }
+
+  function onEditorInput(){}
+
+  // ── LOKALNA LOGIKA OPERACYJNA OKNA PODRĘCZNEGO ──
+  function getMostRecentQnKey(){
+    var idx=lnGetIndex();
+    for(var i=0;i<idx.length;i++){
+      if(idx[i]===QN_KEY||idx[i].startsWith(QN_PREFIX)) return idx[i];
+    }
+    return QN_PREFIX+Date.now()+'__';
+  }
+
+  function lnGetIndex(){try{return JSON.parse(localStorage.getItem(LN_IDX)||'[]');}catch(e){return[];}}
+  function lnSaveIndex(k){try{localStorage.setItem(LN_IDX,JSON.stringify(k));}catch(e){}}
+  function lnSave(k,obj){
+    obj.issueKey=k; obj.updated=new Date().toISOString();
+    try{localStorage.setItem(LN_PRE+k,JSON.stringify(obj));}catch(e){}
+    var idx=lnGetIndex(); if(idx.indexOf(k)===-1){idx.unshift(k);lnSaveIndex(idx);}
+  }
+
+  var _selectedTicketKey='', _selectedTicketSummary='', _ticketSearchTimer=null, _ticketSearchBlurTimer=null;
+  function escStr(s){return(s||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'")}
+  function showTicketDd(html){var dd=document.getElementById('ticket-dd');if(dd){dd.innerHTML=html;dd.style.display='block';}}
+  function hideTicketDd(){var dd=document.getElementById('ticket-dd');if(dd)dd.style.display='none';}
+
+  function selectTicket(key,summary){
+    _selectedTicketKey=key; _selectedTicketSummary=summary;
+    document.getElementById('tc-key').textContent=key;
+    document.getElementById('tc-summary').textContent=summary.length>45?summary.slice(0,45)+'\u2026':summary;
+    document.getElementById('ticket-chip').style.display='flex';
+    var inp=document.getElementById('ticket-search');
+    if(inp){inp.value='';inp.style.display='none';} hideTicketDd();
+  }
+
+  function clearTicketSelection(){
+    var oldKey = _selectedTicketKey || _currentQnKey;
+    _selectedTicketKey=''; _selectedTicketSummary='';
+    document.getElementById('ticket-chip').style.display='none';
+    var inp=document.getElementById('ticket-search');
+    if(inp){inp.style.display='';inp.value='';inp.focus();}
+
+    if (/^[A-Z]+-\d+$/.test(_currentQnKey)) {
+      var noteData = null;
+      try { noteData = JSON.parse(localStorage.getItem(LN_PRE + _currentQnKey)); } catch(e){}
+      if (noteData) {
+        var newKey = QN_PREFIX + Date.now() + '__';
+        noteData.issueKey = newKey;
+        noteData.ticketKey = '';
+        noteData.ticketSummary = '';
+        if (noteData.summary === oldKey) noteData.summary = 'Quick Note';
+
+        localStorage.setItem(LN_PRE + newKey, JSON.stringify(noteData));
+        localStorage.removeItem(LN_PRE + _currentQnKey);
+
+        var idx = lnGetIndex().filter(function(x){ return x !== _currentQnKey; });
+        if (idx.indexOf(newKey) === -1) idx.unshift(newKey);
+        lnSaveIndex(idx);
+
+        _currentQnKey = newKey;
+        document.getElementById('note-header-title').textContent = noteData.summary;
+      }
+    }
+  }
+
+  function _normalize(i){if(!i)return null;return{key:i.key,summary:i.summary||(i.fields&&i.fields.summary)||''};}
+
+  function fetchTickets(jql,callback){
+    fetch('/api/search/jql',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jql:jql,fields:['summary'],maxResults:50})})
+      .then(function(r){return r.text();}).then(function(text){
+        var d; try{d=JSON.parse(text);}catch(e){showTicketDd('<div class="ticket-dd-empty">Parse error</div>');callback([]);return;}
+        if(!d.issues&&d.errorMessages&&d.errorMessages.length){showTicketDd('<div class="ticket-dd-empty">'+d.errorMessages[0]+'</div>');callback([]);return;}
+        callback((d.issues||[]).filter(function(i){return i&&i.key;}));
+      }).catch(function(e){showTicketDd('<div class="ticket-dd-empty">Network error: '+(e&&e.message||'')+'</div>');callback([]);});
+  }
+
+  function renderTicketItems(issues){
+    if(!issues||!issues.length) return '<div class="ticket-dd-empty">No tickets found</div>';
+    return issues.map(function(raw){var i=_normalize(raw);if(!i)return'';
+      return'<div class="ticket-dd-item" data-key="'+escStr(i.key)+'" data-summary="'+escStr(i.summary)+'">'
+        +'<span class="td-key">'+i.key+'</span><span class="td-summary">'+(i.summary.length>55?i.summary.slice(0,55)+'\u2026':i.summary)+'</span></div>';
+    }).join('');
+  }
+
+  document.addEventListener('mousedown',function(e){
+    var item=e.target.closest&&e.target.closest('.ticket-dd-item');
+    if(item){e.preventDefault();selectTicket(item.dataset.key,item.dataset.summary);}
+  });
+
+  var _cachedTickets=null;
+  function _loadTicketCache(cb){
+    fetchTickets('(assignee=currentUser() OR reporter=currentUser()) ORDER BY updated DESC',function(issues){
+      _cachedTickets=issues.map(function(i){return{key:i.key,summary:(i.fields&&i.fields.summary)||i.key||''};});
+      if(cb) cb(_cachedTickets);
+    });
+  }
+
+  function _filterCached(q){
+    if(!_cachedTickets) return[];
+    var ql=q.toLowerCase();
+    return _cachedTickets.filter(function(t){return t.key.toLowerCase().indexOf(ql)!==-1||t.summary.toLowerCase().indexOf(ql)!==-1;});
+  }
+
+  function onTicketSearch(query){
+    clearTimeout(_ticketSearchTimer); var q=query.trim();
+    if(!q){hideTicketDd();return;}
+    if(_cachedTickets){var local=_filterCached(q);if(local.length){showTicketDd(renderTicketItems(local.slice(0,8)));return;}showTicketDd('<div class="ticket-dd-empty">No tickets found</div>');}
+    else showTicketDd('<div class="ticket-dd-loading">Searching…</div>');
+    _ticketSearchTimer=setTimeout(function(){
+      var safe=q.replace(/"/g,'').replace(/\\/g,'');
+      fetchTickets('(assignee=currentUser() OR reporter=currentUser()) AND (summary~"'+safe+'*" OR text~"'+safe+'") ORDER BY updated DESC',function(issues){
+        if(issues.length){
+          if(_cachedTickets) issues.forEach(function(i){var k=i.key,s=(i.fields&&i.fields.summary)||'';if(!_cachedTickets.find(function(c){return c.key===k;})) _cachedTickets.push({key:k,summary:s});});
+          showTicketDd(renderTicketItems(issues.slice(0,8)));
+        }
+      });
+    },400);
+  }
+
+  function onTicketSearchFocus(){
+    clearTimeout(_ticketSearchBlurTimer);
+    if(!_cachedTickets){showTicketDd('<div class="ticket-dd-loading">Loading…</div>');_loadTicketCache(function(t){var inp=document.getElementById('ticket-search'),q=inp?inp.value.trim():'';showTicketDd(renderTicketItems((q?_filterCached(q):t).slice(0,8)));});}
+    else{var inp=document.getElementById('ticket-search'),q=inp?inp.value.trim():'';showTicketDd(renderTicketItems((q?_filterCached(q):_cachedTickets).slice(0,8)));}
+  }
+  function onTicketSearchBlur(){_ticketSearchBlurTimer=setTimeout(hideTicketDd,200);}
+
+  function _stripHtml(html){
+    return(html||'').replace(/<br\s*\/?>/gi,'\n').replace(/<\/p>|<\/div>|<\/li>/gi,'\n')
+      .replace(/<[^>]+>/g,'').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&nbsp;/g,' ')
+      .replace(/\n{3,}/g,'\n\n').trim();
+  }
+
+  function loadNoteByKey(key, summary){
+    if(!key) { loadQuickNote(); return; }
+    _currentQnKey=key;
+    var existing=null; try{existing=JSON.parse(localStorage.getItem(LN_PRE+_currentQnKey));}catch(e){}
+    var ed=document.getElementById('editor'), dt=document.getElementById('qn-date');
+    var ht=document.getElementById('note-header-title');
+    if(existing){
+      if(ed){ var md=existing.md!==undefined?existing.md:_stripHtml(existing.html||''); ed.innerHTML=mdToHtml(md); }
+      if(dt) dt.value=existing.date||'';
+      if(ht&&ht.contentEditable!=='true'){
+        var s=existing.summary||'';
+        ht.textContent=(s&&s!=='Quick Note'&&s!==QN_KEY&&!s.startsWith(QN_PREFIX))?s:'Quick Note';
+      }
+    } else {
+      if(ed) ed.innerHTML=''; if(dt) dt.value='';
+      if(ht&&ht.contentEditable!=='true') ht.textContent='Quick Note';
+    }
+    var ticketKey     = (existing && existing.ticketKey)     || (/^[A-Z]+-\d+$/.test(key) ? key : '');
+    var ticketSummary = (existing && existing.ticketSummary) || summary || '';
+    if(ticketKey){
+      selectTicket(ticketKey, ticketSummary);
+    } else {
+      _selectedTicketKey=''; _selectedTicketSummary='';
+      var ch=document.getElementById('ticket-chip'); if(ch) ch.style.display='none';
+      var inp=document.getElementById('ticket-search'); if(inp) inp.style.display='';
+    }
+    setTimeout(_focusEnd,60);
+  }
+
+  function loadQuickNote(){
+    _currentQnKey=getMostRecentQnKey();
+    var existing=null; try{existing=JSON.parse(localStorage.getItem(LN_PRE+_currentQnKey));}catch(e){}
+    var ed=document.getElementById('editor'), dt=document.getElementById('qn-date');
+    var ht=document.getElementById('note-header-title');
+    if(existing){
+      if(ed){ var md=existing.md!==undefined?existing.md:_stripHtml(existing.html||''); ed.innerHTML=mdToHtml(md); }
+      if(dt&&existing.date) dt.value=existing.date;
+      if(ht&&ht.contentEditable!=='true'){
+        var s=existing.summary||'';
+        ht.textContent=(s&&s!=='Quick Note'&&s!==QN_KEY&&!s.startsWith(QN_PREFIX))?s:'Quick Note';
+      }
+    } else {
+      if(ed) ed.innerHTML=''; if(dt) dt.value='';
+      if(ht&&ht.contentEditable!=='true') ht.textContent='Quick Note';
+    }
+  }
+
+  function _persistCurrentNote(){
+    var editor=document.getElementById('editor'), dateEl=document.getElementById('qn-date');
+    var ht=document.getElementById('note-header-title');
+    var md=htmlToMd(editor?editor.innerHTML:''), date=dateEl?dateEl.value:'';
+    var title=(ht&&ht.contentEditable!=='true')?ht.textContent.trim():'';
+    if(title==='Quick Note') title='';
+    if(!md){
+      var ex=null; try{ex=JSON.parse(localStorage.getItem(LN_PRE+_currentQnKey));}catch(e){}
+      if(!ex){ try{localStorage.removeItem(LN_PRE+_currentQnKey);}catch(e){} lnSaveIndex(lnGetIndex().filter(function(x){return x!==_currentQnKey;})); }
+      return;
+    }
+    if(_selectedTicketKey){
+      var summary=title||_selectedTicketSummary||_selectedTicketKey;
+      lnSave(_selectedTicketKey,{md:md,date:date,summary:summary});
+      if(_currentQnKey!==_selectedTicketKey){
+        var qex=null; try{qex=JSON.parse(localStorage.getItem(LN_PRE+_currentQnKey));}catch(e){}
+        if(!qex||!qex.md){ try{localStorage.removeItem(LN_PRE+_currentQnKey);}catch(e){} lnSaveIndex(lnGetIndex().filter(function(x){return x!==_currentQnKey;})); }
+      }
+    } else {
+      lnSave(_currentQnKey,{md:md,date:date,summary:title||'Quick Note'});
+    }
+  }
+
+  function saveNote(){
+    _persistCurrentNote();
+    closeWin();
+  }
+
+  function newNote(){
+    var editor=document.getElementById('editor'), dateEl=document.getElementById('qn-date');
+    var ht=document.getElementById('note-header-title');
+    var md=htmlToMd(editor?editor.innerHTML:'');
+    if(md){
+      var date=dateEl?dateEl.value:'';
+      var title=(ht&&ht.contentEditable!=='true'&&ht.textContent.trim()!=='Quick Note')?ht.textContent.trim():'';
+      if(_selectedTicketKey) lnSave(_selectedTicketKey,{md:md,date:date,summary:title||_selectedTicketSummary||_selectedTicketKey});
+      else lnSave(_currentQnKey,{md:md,date:date,summary:title||'Quick Note'});
+    }
+    _selectedTicketKey=''; _selectedTicketSummary='';
+    var chip=document.getElementById('ticket-chip'); if(chip) chip.style.display='none';
+    var sinp=document.getElementById('ticket-search'); if(sinp) sinp.value='';
+    hideTicketDd();
+    _currentQnKey=QN_PREFIX+Date.now()+'__';
+    if(editor) editor.innerHTML='';
+    if(dateEl) dateEl.value='';
+    if(ht&&ht.contentEditable!=='true') ht.textContent='Quick Note';
+    setTimeout(function(){ if(editor) editor.focus(); },50);
+  }
+
+  function startTitleEdit(){
+    var el=document.getElementById('note-header-title');
+    if(!el||el.contentEditable==='true') return;
+    _titleBeforeEdit=el.textContent.trim();
+    if(_titleBeforeEdit==='Quick Note') { el.textContent=''; }
+    el.contentEditable='true'; el.focus();
+    var r=document.createRange(),s=window.getSelection();
+    r.selectNodeContents(el); s.removeAllRanges(); s.addRange(r);
+  }
+
+  function finishTitleEdit(cancel){
+    var el=document.getElementById('note-header-title');
+    if(!el||el.contentEditable!=='true') return;
+    el.contentEditable='false';
+    if(cancel){ el.textContent=_titleBeforeEdit||'Quick Note'; return; }
+    var title=el.textContent.trim()||'Quick Note';
+    el.textContent=title;
+    var ex=null; try{ex=JSON.parse(localStorage.getItem(LN_PRE+_currentQnKey));}catch(e){}
+    if(ex){ ex.summary=title; try{localStorage.setItem(LN_PRE+_currentQnKey,JSON.stringify(ex));}catch(e){} }
+  }
+
+  function closeWin(){if(window.electronAPI&&window.electronAPI.closeWindow) window.electronAPI.closeWindow();}
+
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape') closeWin();
+    if((e.metaKey||e.ctrlKey)&&e.key==='Return'){e.preventDefault();saveNote();}
+  });
+
+  window.addEventListener('storage',function(e){
+    if(e.key===LN_IDX||(e.key&&(e.key===LN_PRE+QN_KEY||e.key.startsWith(LN_PRE+QN_PREFIX)))) loadQuickNote();
+  });
+
+  function _focusEnd(){
+    var ed=document.getElementById('editor'); if(!ed) return; ed.focus();
+    var r=document.createRange(),s=window.getSelection();
+    r.selectNodeContents(ed); r.collapse(false); s.removeAllRanges(); s.addRange(r);
+  }
+
+  window.addEventListener('DOMContentLoaded',function(){
+    loadQuickNote();
+    if(window.electronAPI){
+      if(window.electronAPI.onReloadQuickNote) window.electronAPI.onReloadQuickNote(function(){
+        loadQuickNote(); clearTicketSelection(); hideTicketDd();
+        var s=document.getElementById('ticket-search'); if(s) s.blur();
+        setTimeout(_focusEnd,60);
+      });
+      if(window.electronAPI.onSaveAndHide) window.electronAPI.onSaveAndHide(function(){saveNote();});
+      if(window.electronAPI.onShowQuickNote) window.electronAPI.onShowQuickNote(function(payload){
+        _persistCurrentNote();
+        var key     = payload && typeof payload === 'object' ? (payload.key     || '') : (payload || '');
+        var summary = payload && typeof payload === 'object' ? (payload.summary || '') : '';
+        if(key) loadNoteByKey(key, summary); else loadQuickNote();
+      });
+    }
+    setTimeout(_focusEnd,80);
+  });
+</script>
+</body>
+</html>
+</body>
+</html>
